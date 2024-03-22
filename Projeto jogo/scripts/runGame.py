@@ -11,14 +11,6 @@ def runGame (tela):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        
-        # Verificando teclas pressionadas
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_UP] and player.positionY > 0:
-            player.moveUp()
-        if keys[pygame.K_DOWN] and player.positionY < player.image.get_height():
-            player.moveDown()
 
         # Preenchendo a tela com a cor branca
         tela.SCREEN.fill(AZUL_CLARO)

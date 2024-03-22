@@ -6,7 +6,7 @@ class mainCaracter ():
         self.positionX = 0
         self.positionY = 0
         self.speed = 10
-        self.ImageLocation = 'image/bike.png'
+        self.ImageLocation = './assets/image/bike.png'
         self.image = None
         self.topLimit = 0
         self.bottomLimit = 0

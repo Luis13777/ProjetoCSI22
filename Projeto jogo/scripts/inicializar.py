@@ -19,7 +19,7 @@ def startGame ():
     tela.clock = clock
 
     # Carregar a imagem do fundo
-    backgroundImage = pygame.image.load('./image/rua.png')
+    backgroundImage = pygame.image.load('./assets/image/rua.png')
     fundo = backGround (0, dimensions["HEIGHT"] - backgroundImage.get_height()/2, 5, backgroundImage)
 
     tela.elementosParaRenderizar['backGround'] = fundo

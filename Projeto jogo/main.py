@@ -1,8 +1,5 @@
-import sys
-sys.path.append('scripts')
-
-from inicializar import startGame
-from runGame import *
+from scripts.inicializar import startGame
+from scripts.runGame import *
 
 tela = startGame()
 runGame (tela)

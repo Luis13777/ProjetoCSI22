@@ -1,15 +1,16 @@
 import pygame
-from dados import *
+from scripts.dados import *
+from scripts.getImage import getImagem
+import random
 
 class mainCaracter ():
     def __init__(self):
         self.positionX = 0
         self.positionY = 0
-        self.speed = 10
-        self.ImageLocation = './assets/image/bike.png'
+        self.speed = 15
+        self.ImageLocation = getImagem("bike.png")
         self.image = None
         self.topLimit = 0
-        self.bottomLimit = 0
 
         # Carregar a imagem do personagem
         image = pygame.image.load(self.ImageLocation)
@@ -21,36 +22,30 @@ class mainCaracter ():
         self.image = image
         self.positionY = dimensions["HEIGHT"] // 2 - finalImageHeight/2
         self.bottomLimit = dimensions["HEIGHT"] - finalImageHeight
+        self.topLimit = dimensions["HEIGHT"]*0.3
 
     def moveUp(self):
-        if self.positionY > 0:
+        if self.positionY > self.topLimit:
             self.positionY -= self.speed
 
     def moveDown(self):
         if self.positionY < self.bottomLimit:
             self.positionY += self.speed
 
-
-
-
-
 class janela ():
     def __init__(self, SCREEN, clock):
         self.SCREEN = SCREEN
         self.clock = clock
         self.elementosParaRenderizar =  {}
-
-
-
-
-
+        self.speed = 15
+        self.score = 0
 
 class backGround ():
-    def __init__(self, positionX, positionY, speed, image):
-        self.positionX = positionX
-        self.positionY = positionY
-        self.speed = speed
-        self.image = image
+    def __init__(self):
+        self.positionX = 0
+        self.positionY = 0
+
+        self.image = pygame.image.load(getImagem("rua.png"))
 
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageHeight = dimensions["HEIGHT"]*0.7
@@ -58,3 +53,25 @@ class backGround ():
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
 
         self.positionY = dimensions["HEIGHT"] - self.image.get_height()
+
+        self.treeImage = pygame.image.load(getImagem("tree.png"))
+        originalTreeWidth, originalTreeHeight = self.treeImage.get_size()
+        finalTreeHeight = dimensions["HEIGHT"]*0.2
+        finalTreeWidth = originalTreeWidth*finalTreeHeight/originalTreeHeight
+        self.treeImage = pygame.transform.scale(self.treeImage, (finalTreeWidth, finalTreeHeight))
+
+        self.treePosition = 0
+        self.numeroDeArvores = 4
+
+class obstaculo ():
+    def __init__(self):
+        self.positionX = dimensions['WIDTH']
+        self.image = pygame.image.load(getImagem("buraco.png"))
+        originalImageWidth, originalImageHeight = self.image.get_size()
+        finalImageWidth = dimensions["WIDTH"]*0.1
+        finalImageHeight = originalImageHeight*finalImageWidth/originalImageWidth
+        self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
+        self.positionY = random.randint(dimensions['HEIGHT']*0.3, dimensions['HEIGHT'] - self.image.get_height())
+
+
+

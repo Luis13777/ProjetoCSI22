@@ -1,6 +1,6 @@
 import pygame
-from dados import *
-from objetos import *
+from scripts.dados import *
+from scripts.objetos import *
 
 def startGame ():
     # Iniciar jogo
@@ -12,6 +12,7 @@ def startGame ():
 
     # Criar tela de jogo
     SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]), pygame.FULLSCREEN)
+
     pygame.display.set_caption(gameName)
     clock = pygame.time.Clock()
     tela = janela(SCREEN, clock)
@@ -19,8 +20,7 @@ def startGame ():
     tela.clock = clock
 
     # Carregar a imagem do fundo
-    backgroundImage = pygame.image.load('./assets/image/rua.png')
-    fundo = backGround (0, dimensions["HEIGHT"] - backgroundImage.get_height()/2, 5, backgroundImage)
+    fundo = backGround ()
 
     tela.elementosParaRenderizar['backGround'] = fundo
     tela.elementosParaRenderizar['mainCharacter'] = mainCaracter()

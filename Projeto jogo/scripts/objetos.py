@@ -8,7 +8,7 @@ class mainCaracter ():
         self.positionX = 0
         self.positionY = 0
         self.speed = 15
-        self.ImageLocation = getImagem("bike.png")
+        self.ImageLocation = getImagem(mainCharacterImage)
         self.image = None
         self.topLimit = 0
 
@@ -45,10 +45,10 @@ class backGround ():
         self.positionX = 0
         self.positionY = 0
 
-        self.image = pygame.image.load(getImagem("rua.png"))
+        self.image = pygame.image.load(getImagem(backGroundImage))
 
         originalImageWidth, originalImageHeight = self.image.get_size()
-        finalImageHeight = dimensions["HEIGHT"]*0.7
+        finalImageHeight = dimensions["HEIGHT"]*proporcaoDoResto
         finalImageWidth = originalImageWidth*finalImageHeight/originalImageHeight
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
 
@@ -66,12 +66,12 @@ class backGround ():
 class obstaculo ():
     def __init__(self):
         self.positionX = dimensions['WIDTH']
-        self.image = pygame.image.load(getImagem("buraco.png"))
+        self.image = pygame.image.load(getImagem(obstaculoImage))
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"]*0.1
         finalImageHeight = originalImageHeight*finalImageWidth/originalImageWidth
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
-        self.positionY = random.randint(dimensions['HEIGHT']*0.3, dimensions['HEIGHT'] - self.image.get_height())
+        self.positionY = random.uniform(dimensions['HEIGHT']*0.3, dimensions['HEIGHT'] - self.image.get_height())
 
 
 

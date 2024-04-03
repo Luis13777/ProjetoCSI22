@@ -1,7 +1,7 @@
 gameName = "Jogo CSI22"
 
-dimensions = {"WIDTH": 800,
-"HEIGHT": 600}
+dimensions = {"WIDTH": 1920,
+"HEIGHT": 1080}
 
 # Cores
 WHITE = (255, 255, 255)
@@ -11,3 +11,8 @@ AZUL_CLARO = (173, 216, 230)
 
 FPS = 144
 
+mainCharacterImage = 'nave.png'
+proporcaoDoMenu = 0.2
+proporcaoDoResto = 1 - proporcaoDoMenu
+backGroundImage = "space.png"
+obstaculoImage = "meteoro.png"

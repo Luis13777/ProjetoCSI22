@@ -18,7 +18,7 @@ def runGame (tela):
                 running = False
 
         # Preenchendo a tela com a cor branca
-        tela.SCREEN.fill(AZUL_CLARO)
+        tela.SCREEN.fill(BLACK)
         renderBackground(tela)
 
         # Verificando teclas pressionadas

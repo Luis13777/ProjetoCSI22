@@ -1,5 +1,7 @@
-gameName = "Jogo CSI22"
+import pygame
 
+gameName = "Jogo CSI22"
+grupo_sprites = pygame.sprite.Group()
 dimensions = {"WIDTH": 1920,
 "HEIGHT": 1080}
 

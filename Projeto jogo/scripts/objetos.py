@@ -6,7 +6,7 @@ import random
 class MainCaracter(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.speed = 15
+        self.speed = 30
         self.image_location = getImagem(mainCharacterImage)
         self.image = pygame.image.load(self.image_location).convert_alpha()
         original_image_width, original_image_height = self.image.get_size()
@@ -14,9 +14,9 @@ class MainCaracter(pygame.sprite.Sprite):
         final_image_height = original_image_height * final_image_width / original_image_width
         self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
         self.rect = self.image.get_rect()
-        self.rect.x = 0
+        self.rect.x = dimensions["WIDTH"]*0.1
         self.rect.y = dimensions["HEIGHT"] // 2 - final_image_height / 2
-        self.top_limit = dimensions["HEIGHT"] * 0.3
+        self.top_limit = dimensions["HEIGHT"] * proporcaoDoMenu
         self.bottom_limit = dimensions["HEIGHT"] - final_image_height
 
     def moveUp(self):
@@ -45,7 +45,7 @@ class backGround ():
         self.image = pygame.image.load(getImagem(backGroundImage))
 
         originalImageWidth, originalImageHeight = self.image.get_size()
-        finalImageHeight = dimensions["HEIGHT"]*0.7
+        finalImageHeight = dimensions["HEIGHT"]*proporcaoDoResto
         finalImageWidth = originalImageWidth*finalImageHeight/originalImageHeight
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
 
@@ -72,7 +72,7 @@ class Obstaculo(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
         self.rect.x = dimensions['WIDTH']
-        self.rect.y = random.randint(dimensions['HEIGHT'] * 0.3, dimensions['HEIGHT'] - self.rect.height)
+        self.rect.y = random.randint(dimensions['HEIGHT'] * proporcaoDoMenu, dimensions['HEIGHT'] - self.rect.height)
         self.speed = 15
 
     def update(self):

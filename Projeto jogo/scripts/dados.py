@@ -14,7 +14,7 @@ AZUL_CLARO = (173, 216, 230)
 FPS = 144
 
 mainCharacterImage = 'nave.png'
-proporcaoDoMenu = 0.2
+proporcaoDoMenu = 0.1
 proporcaoDoResto = 1 - proporcaoDoMenu
 backGroundImage = "space.png"
 obstaculoImage = "meteoro.png"

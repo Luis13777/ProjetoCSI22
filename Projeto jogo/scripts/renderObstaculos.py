@@ -3,16 +3,17 @@ from scripts.objetos import *
 import random
 
 def novoObstaculo(tela):
-    novoObstaculo = obstaculo()
+    novoObstaculo = Obstaculo()
     if 'obstaculo' in tela.elementosParaRenderizar:
         tela.elementosParaRenderizar['obstaculo'].append(novoObstaculo)
     else:
         tela.elementosParaRenderizar['obstaculo'] = [novoObstaculo]
+    grupo_sprites.add(novoObstaculo)
 
 
 def renderObstaculos(tela, score):
-    for obstaculo in tela.elementosParaRenderizar['obstaculo']:
+    for Obstaculo in tela.elementosParaRenderizar['obstaculo']:
       
-        tela.SCREEN.blit(obstaculo.image, (obstaculo.positionX, obstaculo.positionY))
+        tela.SCREEN.blit(Obstaculo.image, (Obstaculo.positionX, Obstaculo.positionY))
 
-        obstaculo.positionX -= tela.speed
+        Obstaculo.update(tela.speed)

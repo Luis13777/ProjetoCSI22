@@ -3,34 +3,31 @@ from scripts.dados import *
 from scripts.getImage import getImagem
 import random
 
-class mainCaracter ():
+class MainCaracter(pygame.sprite.Sprite):
     def __init__(self):
-        self.positionX = 0
-        self.positionY = 0
+        super().__init__()
         self.speed = 15
-        self.ImageLocation = getImagem("bike.png")
-        self.image = None
-        self.topLimit = 0
-
-        # Carregar a imagem do personagem
-        image = pygame.image.load(self.ImageLocation)
-        originalImageWidth, originalImageHeight = image.get_size()
-        finalImageWidth = dimensions["WIDTH"]*0.1
-        finalImageHeight = originalImageHeight*finalImageWidth/originalImageWidth
-        image = pygame.transform.scale(image, (finalImageWidth, finalImageHeight))
-
-        self.image = image
-        self.positionY = dimensions["HEIGHT"] // 2 - finalImageHeight/2
-        self.bottomLimit = dimensions["HEIGHT"] - finalImageHeight
-        self.topLimit = dimensions["HEIGHT"]*0.3
+        self.image_location = getImagem("bike.png")
+        self.image = pygame.image.load(self.image_location).convert_alpha()
+        original_image_width, original_image_height = self.image.get_size()
+        final_image_width = dimensions["WIDTH"] * 0.1
+        final_image_height = original_image_height * final_image_width / original_image_width
+        self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+        self.rect = self.image.get_rect()
+        self.rect.x = 0
+        self.rect.y = dimensions["HEIGHT"] // 2 - final_image_height / 2
+        self.top_limit = dimensions["HEIGHT"] * 0.3
+        self.bottom_limit = dimensions["HEIGHT"] - final_image_height
 
     def moveUp(self):
-        if self.positionY > self.topLimit:
-            self.positionY -= self.speed
+        if self.rect.y > self.top_limit:
+            self.rect.y -= self.speed
 
     def moveDown(self):
-        if self.positionY < self.bottomLimit:
-            self.positionY += self.speed
+        if self.rect.y < self.bottom_limit:
+            self.rect.y += self.speed
+
+
 
 class janela ():
     def __init__(self, SCREEN, clock):
@@ -63,15 +60,21 @@ class backGround ():
         self.treePosition = 0
         self.numeroDeArvores = 4
 
-class obstaculo ():
+
+
+class Obstaculo(pygame.sprite.Sprite):
     def __init__(self):
-        self.positionX = dimensions['WIDTH']
-        self.image = pygame.image.load(getImagem("buraco.png"))
+        super().__init__()
+        self.image = pygame.image.load(getImagem("buraco.png")).convert_alpha()
         originalImageWidth, originalImageHeight = self.image.get_size()
-        finalImageWidth = dimensions["WIDTH"]*0.1
-        finalImageHeight = originalImageHeight*finalImageWidth/originalImageWidth
+        finalImageWidth = dimensions["WIDTH"] * 0.1
+        finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
-        self.positionY = random.randint(dimensions['HEIGHT']*0.3, dimensions['HEIGHT'] - self.image.get_height())
+        self.rect = self.image.get_rect()
+        self.rect.x = dimensions['WIDTH']
+        self.rect.y = random.randint(dimensions['HEIGHT'] * 0.3, dimensions['HEIGHT'] - self.rect.height)
+        self.speed = 15
 
-
+    def update(self):
+        self.rect.x -= self.speed
 

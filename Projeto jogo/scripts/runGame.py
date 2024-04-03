@@ -29,14 +29,20 @@ def runGame (tela):
             player.moveDown()
 
         # Desenhando a imagem na tela
-        tela.SCREEN.blit(player.image, (player.positionX, player.positionY))
+        # tela.SCREEN.blit(player.image, (player.positionX, player.positionY))
         if tela.score > 0.5:
             tela.score = 0
             tela.speed += 1
             novoObstaculo(tela)
         if 'obstaculo' in tela.elementosParaRenderizar:
-            renderObstaculos(tela, tela.score)
             checkCollision(tela)
+
+
+        # Atualize a posição dos sprites
+        grupo_sprites.update()
+
+        # Renderize os sprites na tela
+        grupo_sprites.draw(tela.SCREEN)
 
         # Atualizar a tela
         pygame.display.flip()

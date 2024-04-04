@@ -19,19 +19,27 @@ from scripts.objetos import *
 def checkCollision(tela):
     for meteoro in meteoros:
         if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], meteoro):
-            # Criar uma superfície para o círculo
-            circle_surface = pygame.Surface((20, 20), pygame.SRCALPHA)
-            pygame.draw.circle(circle_surface, (255, 0, 0), (10, 10), 10)  # Desenhar um círculo vermelho
+            tela.elementosParaRenderizar['mainCharacter'].perderVida()
+            
 
-            # Definir as coordenadas do canto superior direito
-            circle_position = (0, 0)
 
-            # Blitar o círculo na tela principal
-            tela.SCREEN.blit(circle_surface, circle_position)
+            # # Criar uma superfície para o círculo
+            # circle_surface = pygame.Surface((20, 20), pygame.SRCALPHA)
+            # pygame.draw.circle(circle_surface, (255, 0, 0), (10, 10), 10)  # Desenhar um círculo vermelho
+
+            # # Definir as coordenadas do canto superior direito
+            # circle_position = (0, 0)
+
+            # # Blitar o círculo na tela principal
+            # tela.SCREEN.blit(circle_surface, circle_position)
         
     hits = pygame.sprite.groupcollide(tiros, meteoros, True, True)
     for hit in hits:
-        meteoro = hits[hit][0]
-        # print(meteoro.rect.x/dimensions["WIDTH"], meteoro.rect.y/dimensions["HEIGHT"])
-        explosao = Explosao((meteoro.rect.centerx, meteoro.rect.centery))
+        laser = hit
+        explosao = Explosao((laser.rect.right, laser.rect.centery))
         all_sprites.add(explosao)
+        tela.score += 50
+
+    # for poder in poderes:
+    #     if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
+    #         poder.kill()

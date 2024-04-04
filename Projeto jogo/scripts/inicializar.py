@@ -31,6 +31,24 @@ def startGame ():
     tela.elementosParaRenderizar['backGround'] = fundo
     tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
     all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
+    mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
+
+
+    # Defina o tipo de evento para gerar obstáculos
+    GERAR_OBSTACULOS_EVENTO = pygame.USEREVENT + 1
+
+    # Configure o temporizador para gerar o evento com o intervalo inicial
+    pygame.time.set_timer(GERAR_OBSTACULOS_EVENTO, velocidades['taxaDeGeracaoDeObstaculos'])
+
+    eventosTemporarios['gerarObstaculo'] = GERAR_OBSTACULOS_EVENTO
+
+    # Defina o tipo de evento para gerar obstáculos
+    GERAR_PODER_EVENTO = pygame.USEREVENT + 1
+
+    # Configure o temporizador para gerar o evento com o intervalo inicial
+    pygame.time.set_timer(GERAR_PODER_EVENTO, velocidades['taxaDeGeracaoDePowerUps'])
+
+    eventosTemporarios['gerarPowerUp'] = GERAR_PODER_EVENTO 
     return tela
 
 

@@ -1,6 +1,7 @@
 from scripts.dados import *
 from scripts.objetos import *
 import random
+import threading
 
 def novoObstaculo(tela):
     novoObstaculo = Obstaculo()
@@ -11,9 +12,3 @@ def novoObstaculo(tela):
     all_sprites.add(novoObstaculo)
     meteoros.add(novoObstaculo)
 
-# def renderObstaculos(tela, score):
-#     for obstaculo in tela.elementosParaRenderizar['obstaculo']:
-      
-#         tela.SCREEN.blit(obstaculo.image, (obstaculo.positionX, obstaculo.positionY))
-
-#         obstaculo.positionX -= tela.speed

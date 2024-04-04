@@ -17,10 +17,8 @@ from scripts.objetos import *
 #                 tela.SCREEN.blit(circle_surface, circle_position)
 
 def checkCollision(tela):
-    personagem = tela.elementosParaRenderizar['mainCharacter']
-    
-    for obstaculo in tela.elementosParaRenderizar['obstaculo']:
-        if pygame.sprite.collide_mask(personagem, obstaculo):
+    for meteoro in meteoros:
+        if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], meteoro):
             # Criar uma superfície para o círculo
             circle_surface = pygame.Surface((20, 20), pygame.SRCALPHA)
             pygame.draw.circle(circle_surface, (255, 0, 0), (10, 10), 10)  # Desenhar um círculo vermelho
@@ -30,3 +28,10 @@ def checkCollision(tela):
 
             # Blitar o círculo na tela principal
             tela.SCREEN.blit(circle_surface, circle_position)
+        
+    hits = pygame.sprite.groupcollide(tiros, meteoros, True, True)
+    for hit in hits:
+        meteoro = hits[hit][0]
+        # print(meteoro.rect.x/dimensions["WIDTH"], meteoro.rect.y/dimensions["HEIGHT"])
+        explosao = Explosao((meteoro.rect.centerx, meteoro.rect.centery))
+        all_sprites.add(explosao)

@@ -30,7 +30,7 @@ def startGame ():
 
     tela.elementosParaRenderizar['backGround'] = fundo
     tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
-    grupo_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
+    all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
     return tela
 
 

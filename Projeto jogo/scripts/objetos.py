@@ -18,6 +18,9 @@ class MainCaracter(pygame.sprite.Sprite):
         self.rect.y = dimensions["HEIGHT"] // 2 - final_image_height / 2
         self.top_limit = dimensions["HEIGHT"] * proporcaoDoMenu
         self.bottom_limit = dimensions["HEIGHT"] - final_image_height
+        self.last_shot = pygame.time.get_ticks()  # Armazena o momento do último tiro
+        self.shoot_delay = 1000  # Delay em milissegundos entre os tiros
+
 
     def moveUp(self):
         if self.rect.y > self.top_limit:
@@ -27,8 +30,13 @@ class MainCaracter(pygame.sprite.Sprite):
         if self.rect.y < self.bottom_limit:
             self.rect.y += self.speed
 
-
-
+    def shoot(self):
+        now = pygame.time.get_ticks()
+        if now - self.last_shot > self.shoot_delay:
+            self.last_shot = now
+            tiro = Tiro(self.rect.right, self.rect.centery)
+            all_sprites.add(tiro)
+            tiros.add(tiro)
 class janela ():
     def __init__(self, SCREEN, clock):
         self.SCREEN = SCREEN
@@ -77,4 +85,43 @@ class Obstaculo(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.x -= self.speed
+        
 
+class Tiro(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = pygame.image.load(getImagem(tiroImage)).convert_alpha()  # Carrega a imagem do tiro
+        originalImageWidth, originalImageHeight = self.image.get_size()
+        finalImageWidth = dimensions["WIDTH"] * 0.1
+        finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
+        self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
+        self.rect = self.image.get_rect()
+        self.rect.centerx = x + finalImageHeight/2
+        self.rect.centery = y
+        self.rect.center = (x, y)
+        self.speed = 75
+
+    def update(self):
+        self.rect.x += self.speed
+        if self.rect.right > dimensions["WIDTH"]:  # Remova o tiro se ele sair da tela
+            self.kill()
+
+class Explosao(pygame.sprite.Sprite):
+    def __init__(self, center):
+        super().__init__()
+        self.image = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
+        self.scale_factor = 0.1  # Fator de escala inicial
+        width = self.image.get_width() * self.scale_factor
+        height = self.image.get_height() * self.scale_factor
+        self.image = pygame.transform.scale(self.image, (width, height))
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+        self.explosionMoment = pygame.time.get_ticks()
+        self.explosiomTime = 100
+   
+
+    def update(self):
+        
+        if pygame.time.get_ticks() - self.explosionMoment > self.explosiomTime:
+   
+            self.kill()

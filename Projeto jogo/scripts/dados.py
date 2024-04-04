@@ -1,7 +1,6 @@
 import pygame
 
 gameName = "Jogo CSI22"
-grupo_sprites = pygame.sprite.Group()
 dimensions = {"WIDTH": 1920,
 "HEIGHT": 1080}
 
@@ -18,3 +17,12 @@ proporcaoDoMenu = 0.1
 proporcaoDoResto = 1 - proporcaoDoMenu
 backGroundImage = "space.png"
 obstaculoImage = "meteoro.png"
+tiroImage = "tiro.png"
+explosaoImage = "explosao.png"
+
+
+
+all_sprites = pygame.sprite.Group()
+tiros = pygame.sprite.Group()
+meteoros = pygame.sprite.Group()
+# explosoes = pygame.sprite.Group()

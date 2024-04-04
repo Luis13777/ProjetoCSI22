@@ -8,11 +8,12 @@ def novoObstaculo(tela):
         tela.elementosParaRenderizar['obstaculo'].append(novoObstaculo)
     else:
         tela.elementosParaRenderizar['obstaculo'] = [novoObstaculo]
-    grupo_sprites.add(novoObstaculo)
+    all_sprites.add(novoObstaculo)
+    meteoros.add(novoObstaculo)
 
-def renderObstaculos(tela, score):
-    for obstaculo in tela.elementosParaRenderizar['obstaculo']:
+# def renderObstaculos(tela, score):
+#     for obstaculo in tela.elementosParaRenderizar['obstaculo']:
       
-        tela.SCREEN.blit(obstaculo.image, (obstaculo.positionX, obstaculo.positionY))
+#         tela.SCREEN.blit(obstaculo.image, (obstaculo.positionX, obstaculo.positionY))
 
-        obstaculo.positionX -= tela.speed
+#         obstaculo.positionX -= tela.speed

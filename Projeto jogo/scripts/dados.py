@@ -1,4 +1,5 @@
 import pygame
+from scripts.getImage import getImagem
 
 gameName = "Jogo CSI22"
 dimensions = {"WIDTH": 1920,
@@ -22,27 +23,40 @@ tiroImage = "tiro.png"
 explosaoImage = "explosao.png"
 vidaCheia = "vidaCheia.png"
 vidaVazia = "vidaVazia.png"
+powerUpTiro = "poderTiro.png"
+powerUpVida = "vidaCheia.png"
 
-velocidades = {'mainCharacterSpeed': 20, 
+imagens ={}
+
+
+arquivoFonte = 'assets/fontes/ARCADE_N.TTF'  
+tamanho_fonte = 36
+
+
+
+fontes = {'fonteScore': {'diretorio': 'assets/fontes/ARCADE_N.TTF', 'tamanho': 36, 'fontePyGame': ''}}
+
+
+velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,
                'obstaculoSpeed': 15,
                'tiro': 75,
                'powerUpSpeed': 7,
-               'pontosParaGerarObstaculo': 50,
+               'pontosParaGerarObstaculo': 100,
                'pontosParaGerarPoder': 500,
-               'maxMainCharacterSpeed': 40,
+               'maxMainCharacterSpeed': 30,
                'maxTelaSpeed': 100,
                'maxObstaculoSpeed': 75,
                'minPontosParaGerarObstaculo': 9,
                'scoreParaAumentarVelocidade': 500,
                'scoreParaAumentarVelocidadeObstaculo': 500,
-               'scoreParaAumentarVelocidadeGeracaoObstaculo': 500,}
+               'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,}
 
 
 
 poderes = {
-    'maisVida': {'image': vidaCheia, 'tipo': 'vida'},
-    'tiroMaisRapido': {'image': 'poderTiro.png', 'tipo': 'tiro'}
+    'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': powerUpVida},
+    'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': powerUpTiro}
 }
 
 eventosTemporarios = {}

@@ -6,9 +6,13 @@ def startGame ():
 
     # Iniciar jogo
     pygame.init()
+
+
+
     # Pegar dimensões do display
     info = pygame.display.Info()
     dimensions["WIDTH"], dimensions["HEIGHT"] = info.current_w, info.current_h
+
 
     # # Criar tela de jogo
     # SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]), pygame.FULLSCREEN)
@@ -24,6 +28,26 @@ def startGame ():
     tela = janela(SCREEN, clock)
     tela.SCREEN = SCREEN
     tela.clock = clock
+
+
+    imagens['mainCharacter'] = pygame.image.load(getImagem(mainCharacterImage)).convert_alpha()
+    imagens['backGroundImage'] = pygame.image.load(getImagem(backGroundImage)).convert_alpha()
+    imagens['obstaculoImage'] = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
+    imagens['tiroImage'] = pygame.image.load(getImagem(tiroImage)).convert_alpha()
+    imagens['explosaoImage'] = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
+    imagens['vidaCheia'] = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
+    imagens['vidaVazia'] = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
+
+    for poder in poderes:
+        imagens[poderes[poder]['image']] = pygame.image.load(getImagem(poderes[poder]['imageName'])).convert_alpha()
+
+    for fonte in fontes:
+        fontes[fonte]['fontePyGame'] = pygame.font.Font(fontes[fonte]['diretorio'], fontes[fonte]['tamanho'])
+
+
+    # imagens['powerUpTiro'] = pygame.image.load(getImagem(powerUpTiro)).convert_alpha()
+
+
 
     # Carregar a imagem do fundo
     fundo = backGround ()
@@ -49,6 +73,8 @@ def startGame ():
     # pygame.time.set_timer(GERAR_PODER_EVENTO, velocidades['taxaDeGeracaoDePowerUps'])
 
     # eventosTemporarios['gerarPowerUp'] = GERAR_PODER_EVENTO 
+
+
     return tela
 
 

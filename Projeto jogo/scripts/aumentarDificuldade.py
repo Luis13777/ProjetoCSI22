@@ -9,7 +9,7 @@ def aumentarDificuldade(tela):
 
     # Aumenta a velocidade do fundo
     if tela.speed < velocidades['maxTelaSpeed']:
-        tela.speed *= 1.0003
+        tela.speed *= 1.0001
 
     # Aumenta a velocidade dos obstaculos
     if tela.scoreParaAumentarVelocidadeObstaculo > velocidades['scoreParaAumentarVelocidadeObstaculo'] and velocidades['obstaculoSpeed'] < velocidades['maxObstaculoSpeed']:
@@ -19,6 +19,6 @@ def aumentarDificuldade(tela):
     # Diminui a quantidade de pontos necessarios para gerar um obstaculo
     if tela.scoreParaAumentarVelocidadeGeracaoObstaculo > velocidades['scoreParaAumentarVelocidadeGeracaoObstaculo'] and velocidades['pontosParaGerarObstaculo'] > velocidades['minPontosParaGerarObstaculo']:
         velocidades['pontosParaGerarObstaculo'] *= 0.9
-
+        tela.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
         
    

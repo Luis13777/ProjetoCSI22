@@ -109,10 +109,6 @@ from scripts.aumentarDificuldade import *
 from scripts.poderes import *
 
 def runGame (tela): 
-
-
-
-
     # Loop principal do jogo
     player = tela.elementosParaRenderizar['mainCharacter']
     running = True

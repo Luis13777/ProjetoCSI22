@@ -7,8 +7,10 @@ class MainCaracter(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.speed = velocidades['mainCharacterSpeed']
-        self.image_location = getImagem(mainCharacterImage)
-        self.image = pygame.image.load(self.image_location).convert_alpha()
+
+        # self.image_location = getImagem(mainCharacterImage)
+        # self.image = pygame.image.load(self.image_location).convert_alpha()
+        self.image = imagens['mainCharacter']
         original_image_width, original_image_height = self.image.get_size()
         final_image_width = dimensions["WIDTH"] * 0.05
         final_image_height = original_image_height * final_image_width / original_image_width
@@ -23,14 +25,18 @@ class MainCaracter(pygame.sprite.Sprite):
         self.tempoPerdeuVida = pygame.time.get_ticks()
         self.maxVidas = 3
         self.vidas = 3
-        self.imageVidaCheia = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
+
+        self.imageVidaCheia = imagens['vidaCheia']
+        # self.imageVidaCheia = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
 
         original_image_width, original_image_height = self.imageVidaCheia.get_size()
         final_image_width = dimensions["WIDTH"] * 0.05
         final_image_height = original_image_height * final_image_width / original_image_width
         self.imageVidaCheia = pygame.transform.scale(self.imageVidaCheia, (final_image_width, final_image_height))
 
-        self.imageVidaVazia = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
+        self.imageVidaVazia = imagens['vidaVazia']
+
+        # self.imageVidaVazia = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
 
         original_image_width, original_image_height = self.imageVidaVazia.get_size()
         final_image_width = dimensions["WIDTH"] * 0.05
@@ -76,8 +82,9 @@ class backGround ():
     def __init__(self):
         self.positionX = 0
         self.positionY = 0
+        self.image = imagens['backGroundImage']
+        # self.image = pygame.image.load(getImagem(backGroundImage))
 
-        self.image = pygame.image.load(getImagem(backGroundImage))
 
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageHeight = dimensions["HEIGHT"]*proporcaoDoResto
@@ -92,7 +99,9 @@ class backGround ():
 class Obstaculo(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
+
+        self.image = imagens['obstaculoImage']
+        # self.image = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * random.uniform(0.05, 0.3)
         finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
@@ -111,7 +120,8 @@ class Obstaculo(pygame.sprite.Sprite):
 class Tiro(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image = pygame.image.load(getImagem(tiroImage)).convert_alpha()  # Carrega a imagem do tiro
+        self.image = imagens['tiroImage']
+        # self.image = pygame.image.load(getImagem(tiroImage)).convert_alpha()  
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * 0.1
         finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
@@ -131,7 +141,10 @@ class Tiro(pygame.sprite.Sprite):
 class Explosao(pygame.sprite.Sprite):
     def __init__(self, center, meteoro):
         super().__init__()
-        self.image = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
+
+        self.image = imagens['explosaoImage']
+        # self.image = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
+
         alturaFinal = meteoro[0].image.get_height()
         
         # width = self.image.get_width() * self.scale_factor
@@ -156,7 +169,11 @@ class PowerUp(pygame.sprite.Sprite):
         listaDePoderes = list(poderes)
         novoPoder = listaDePoderes[random.randint(0, len(listaDePoderes) - 1)]
 
-        self.image = pygame.image.load(getImagem(poderes[novoPoder]['image'])).convert_alpha()
+        self.image = imagens[poderes[novoPoder]['image']]
+
+        # self.image = pygame.image.load(getImagem(poderes[novoPoder]['image'])).convert_alpha()
+
+
         self.tipo = poderes[novoPoder]['tipo']
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * 0.05

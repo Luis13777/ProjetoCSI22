@@ -12,9 +12,10 @@ AZUL_CLARO = (173, 216, 230)
 
 FPS = 144
 
-mainCharacterImage = 'nave.png'
 proporcaoDoMenu = 0.1
 proporcaoDoResto = 1 - proporcaoDoMenu
+
+mainCharacterImage = 'nave.png'
 backGroundImage = "space.png"
 obstaculoImage = "meteoro.png"
 tiroImage = "tiro.png"
@@ -27,14 +28,14 @@ velocidades = {'mainCharacterSpeed': 20,
                'obstaculoSpeed': 15,
                'tiro': 75,
                'powerUpSpeed': 7,
-               'taxaDeGeracaoDeObstaculos': 2000,
-               'taxaDeGeracaoDePowerUps': 200}
+               'pontosParaGerarObstaculo': 50,
+               'pontosParaGerarPoder': 1000}
 
 
 
 poderes = {
-    'maisVida': vidaCheia,
-    'tiroMaisRapido': 'tiro.png'
+    'maisVida': {'image': vidaCheia, 'tipo': 'vida'},
+    'tiroMaisRapido': {'image': 'poderTiro.png', 'tipo': 'tiro'}
 }
 
 eventosTemporarios = {}

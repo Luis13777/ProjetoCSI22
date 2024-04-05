@@ -36,10 +36,14 @@ def checkCollision(tela):
     hits = pygame.sprite.groupcollide(tiros, meteoros, True, True)
     for hit in hits:
         laser = hit
-        explosao = Explosao((laser.rect.right, laser.rect.centery))
+        explosao = Explosao((laser.rect.right, laser.rect.centery), hits[hit])
         all_sprites.add(explosao)
         tela.score += 50
 
-    # for poder in poderes:
-    #     if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
-    #         poder.kill()
+    for poder in poderes_grupo:
+        if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
+            if poder.tipo == 'vida' and tela.elementosParaRenderizar['mainCharacter'].vidas < tela.elementosParaRenderizar['mainCharacter'].maxVidas:
+                tela.elementosParaRenderizar['mainCharacter'].vidas += 1
+            elif poder.tipo == 'tiro':
+                tela.elementosParaRenderizar['mainCharacter'].shoot_delay -= 100
+            poder.kill()

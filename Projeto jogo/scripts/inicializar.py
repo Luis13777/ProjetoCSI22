@@ -35,20 +35,20 @@ def startGame ():
 
 
     # Defina o tipo de evento para gerar obstáculos
-    GERAR_OBSTACULOS_EVENTO = pygame.USEREVENT + 1
+    # GERAR_OBSTACULOS_EVENTO = pygame.USEREVENT + 1
 
     # Configure o temporizador para gerar o evento com o intervalo inicial
-    pygame.time.set_timer(GERAR_OBSTACULOS_EVENTO, velocidades['taxaDeGeracaoDeObstaculos'])
+    # pygame.time.set_timer(GERAR_OBSTACULOS_EVENTO, velocidades['taxaDeGeracaoDeObstaculos'])
 
-    eventosTemporarios['gerarObstaculo'] = GERAR_OBSTACULOS_EVENTO
+    # eventosTemporarios['gerarObstaculo'] = GERAR_OBSTACULOS_EVENTO
 
-    # Defina o tipo de evento para gerar obstáculos
-    GERAR_PODER_EVENTO = pygame.USEREVENT + 1
+    # # Defina o tipo de evento para gerar obstáculos
+    # GERAR_PODER_EVENTO = pygame.USEREVENT + 1
 
-    # Configure o temporizador para gerar o evento com o intervalo inicial
-    pygame.time.set_timer(GERAR_PODER_EVENTO, velocidades['taxaDeGeracaoDePowerUps'])
+    # # Configure o temporizador para gerar o evento com o intervalo inicial
+    # pygame.time.set_timer(GERAR_PODER_EVENTO, velocidades['taxaDeGeracaoDePowerUps'])
 
-    eventosTemporarios['gerarPowerUp'] = GERAR_PODER_EVENTO 
+    # eventosTemporarios['gerarPowerUp'] = GERAR_PODER_EVENTO 
     return tela
 
 

@@ -121,6 +121,12 @@ def runGame (tela):
 
 
         tela.score += 1
+        tela.scoreParaGerarObstaculo += 1
+        tela.scoreParaAumentarVelocidade += 1
+        tela.scoreParaAumentarVelocidadeObstaculo += 1
+        tela.scoreParaGerarPoder += 1
+        tela.scoreParaAumentarVelocidadeGeracaoObstaculo += 1
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -139,10 +145,12 @@ def runGame (tela):
         #     if evento.type == eventosTemporarios['gerarPowerUp']:
         #         novoPowerUp(tela)
 
-        if tela.score % velocidades['pontosParaGerarObstaculo'] == 0:
+        if tela.scoreParaGerarObstaculo > velocidades['pontosParaGerarObstaculo']:
             novoObstaculo(tela)
-        if tela.score % velocidades['pontosParaGerarPoder'] == 0:
+            tela.scoreParaGerarObstaculo = 1
+        if tela.scoreParaGerarPoder > velocidades['pontosParaGerarPoder']:
             novoPowerUp(tela)
+            tela.scoreParaGerarPoder = 1
         
 
 

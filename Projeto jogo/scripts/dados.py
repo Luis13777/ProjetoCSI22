@@ -29,7 +29,14 @@ velocidades = {'mainCharacterSpeed': 20,
                'tiro': 75,
                'powerUpSpeed': 7,
                'pontosParaGerarObstaculo': 50,
-               'pontosParaGerarPoder': 1000}
+               'pontosParaGerarPoder': 500,
+               'maxMainCharacterSpeed': 40,
+               'maxTelaSpeed': 100,
+               'maxObstaculoSpeed': 75,
+               'minPontosParaGerarObstaculo': 9,
+               'scoreParaAumentarVelocidade': 500,
+               'scoreParaAumentarVelocidadeObstaculo': 500,
+               'scoreParaAumentarVelocidadeGeracaoObstaculo': 500,}
 
 
 

@@ -65,7 +65,12 @@ class janela ():
         self.clock = clock
         self.elementosParaRenderizar =  {}
         self.speed = velocidades['janelaSpeed']
-        self.score = 0
+        self.score = 1
+        self.scoreParaGerarObstaculo = 1
+        self.scoreParaGerarPoder = 1
+        self.scoreParaAumentarVelocidadeObstaculo = 1
+        self.scoreParaAumentarVelocidade = 1
+        self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
 
 class backGround ():
     def __init__(self):

@@ -1,7 +1,6 @@
 from scripts.dados import *
 from scripts.objetos import *
-import random
-import threading
+
 
 def novoObstaculo(tela):
     novoObstaculo = Obstaculo()

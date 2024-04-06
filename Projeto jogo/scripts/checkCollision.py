@@ -47,3 +47,12 @@ def checkCollision(tela):
             elif poder.tipo == 'tiro':
                 tela.elementosParaRenderizar['mainCharacter'].shoot_delay -= 100
             poder.kill()
+
+    hits = pygame.sprite.groupcollide(tiros, inimigosGroup, True, False)
+    for hit in hits:
+        laser = hit
+        explosao = Explosao((laser.rect.right, laser.rect.centery), hits[hit])
+        all_sprites.add(explosao)
+        for inimigo in inimigosGroup:
+            inimigo.perderVida()
+        tela.score += 50

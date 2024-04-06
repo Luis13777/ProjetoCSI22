@@ -77,6 +77,7 @@ class janela ():
         self.scoreParaAumentarVelocidadeObstaculo = 1
         self.scoreParaAumentarVelocidade = 1
         self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
+        self.scoreParaGerarBoss = 1
 
 class backGround ():
     def __init__(self):
@@ -127,14 +128,14 @@ class Tiro(pygame.sprite.Sprite):
         finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
-        self.rect.centerx = x + finalImageHeight/2
-        self.rect.centery = y
+        # self.rect.centerx = x + finalImageHeight/2
+        # self.rect.centery = y
         self.rect.center = (x, y)
         self.speed = velocidades['tiro']
 
     def update(self):
         self.rect.x += self.speed
-        if self.rect.right > dimensions["WIDTH"]:  # Remova o tiro se ele sair da tela
+        if self.rect.left > dimensions["WIDTH"]:  # Remova o tiro se ele sair da tela
             self.kill()
         
 
@@ -188,4 +189,98 @@ class PowerUp(pygame.sprite.Sprite):
         self.rect.x -= self.speed
         if self.rect.right < 0:
             self.kill()
+
+
+class Boss(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.speed = velocidades['boss1Speed']
+        self.image = imagens['boss']
+        original_image_width, original_image_height = self.image.get_size()
+        final_image_width = dimensions["WIDTH"] * 0.1
+        final_image_height = original_image_height * final_image_width / original_image_width
+        self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+        self.top_limit = dimensions["HEIGHT"] * proporcaoDoMenu
+        self.bottom_limit = dimensions["HEIGHT"]
+        self.rect = self.image.get_rect()
+        self.rect.left = dimensions["WIDTH"]
+        self.rect.centery = dimensions["HEIGHT"] // 2
+        self.last_shot = pygame.time.get_ticks()  # Armazena o momento do último tiro
+        self.shoot_delay = 1000  # Delay em milissegundos entre os tiros
+        self.tempoPerdeuVida = pygame.time.get_ticks()
+        self.vidas = 3
+        self.vidaDelay = 1000
+        self.subindo = True
+
+    def moveUp(self):
+        if self.rect.y > self.top_limit:
+            self.rect.y -= self.speed
+
+    def moveDown(self):
+        if self.rect.bottom < self.bottom_limit:
+            self.rect.y += self.speed
+
+    def moveLeft(self):
+        if self.rect.left > 0:
+            self.rect.x -= self.speed
+
+    def shoot(self):
+        now = pygame.time.get_ticks()
+        if now - self.last_shot > self.shoot_delay:
+            self.last_shot = now
+            tiro = TiroInimigo(self.rect.right, self.rect.centery)
+            all_sprites.add(tiro)
+            tirosInimigos.add(tiro)
+
+    def perderVida(self):
+        if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay:
+            self.vidas -= 1
+            self.tempoPerdeuVida = pygame.time.get_ticks()
+
+        if self.vidas == 2:
+            self.image = imagens['bossDamaged']
+            original_image_width, original_image_height = self.image.get_size()
+            final_image_width = dimensions["WIDTH"] * 0.1
+            final_image_height = original_image_height * final_image_width / original_image_width
+            self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+
+        if self.vidas == 1:
+            self.image = imagens['bossVeryDamaged']
+            original_image_width, original_image_height = self.image.get_size()
+            final_image_width = dimensions["WIDTH"] * 0.1
+            final_image_height = original_image_height * final_image_width / original_image_width
+            self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+
+        if self.vidas <= 0:
+            self.kill()
+
+    def update(self):
+        self.shoot()
+        if self.rect.right > dimensions["WIDTH"]*0.9:  
+            self.rect.x -= self.speed
+        if self.subindo:
+            self.moveUp()
+            if self.rect.top <= self.top_limit*2:
+                self.subindo = False
+        else:
+            self.moveDown()
+            if self.rect.bottom >= self.bottom_limit - self.top_limit*2:
+                self.subindo = True
         
+class TiroInimigo(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = imagens['tiroImage']
+        originalImageWidth, originalImageHeight = self.image.get_size()
+        finalImageWidth = dimensions["WIDTH"] * 0.1
+        finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
+        self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
+        self.image = pygame.transform.rotate(self.image, 180)
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+        self.speed = velocidades['tiro']
+
+    def update(self):
+        self.rect.x -= self.speed
+        if self.rect.right < 0:  
+            self.kill()

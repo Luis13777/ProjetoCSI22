@@ -25,7 +25,9 @@ vidaCheia = "vidaCheia.png"
 vidaVazia = "vidaVazia.png"
 powerUpTiro = "poderTiro.png"
 powerUpVida = "vidaCheia.png"
-
+boss = "inimigo1.png"
+bossDamaged = "inimigo1damaged.png"
+bossVeryDamaged = "inimigo1verydamaged.png"
 imagens ={}
 
 
@@ -50,7 +52,9 @@ velocidades = {'mainCharacterSpeed': 10,
                'minPontosParaGerarObstaculo': 9,
                'scoreParaAumentarVelocidade': 500,
                'scoreParaAumentarVelocidadeObstaculo': 500,
-               'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,}
+               'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,
+               'scoreParaGerarBoss': 300,
+               'boss1Speed': 2,}
 
 
 
@@ -64,5 +68,7 @@ eventosTemporarios = {}
 mainCharacter = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 tiros = pygame.sprite.Group()
+tirosInimigos = pygame.sprite.Group()
 meteoros = pygame.sprite.Group()
 poderes_grupo = pygame.sprite.Group()
+inimigosGroup = pygame.sprite.Group()

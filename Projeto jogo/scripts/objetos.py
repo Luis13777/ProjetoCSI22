@@ -1,6 +1,7 @@
 import pygame
 from scripts.dados import *
 from scripts.getImage import getImagem
+import math
 import random
 
 class MainCaracter(pygame.sprite.Sprite):
@@ -116,7 +117,7 @@ class Obstaculo(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
         self.rect.x = dimensions['WIDTH']
-        self.rect.y = random.randint(dimensions['HEIGHT'] * proporcaoDoMenu, dimensions['HEIGHT'] - self.rect.height)
+        self.rect.y = random.randint(math.floor(dimensions['HEIGHT'] * proporcaoDoMenu), math.ceil(dimensions['HEIGHT'] - self.rect.height))
         self.speed = velocidades['obstaculoSpeed']
 
     def update(self):
@@ -189,7 +190,7 @@ class PowerUp(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
         self.rect.x = dimensions['WIDTH']
-        self.rect.y = random.randint(dimensions['HEIGHT'] * proporcaoDoMenu, dimensions['HEIGHT'] - self.rect.height)
+        self.rect.y = random.randint(math.floor(dimensions['HEIGHT'] * proporcaoDoMenu), math.floor(dimensions['HEIGHT'] - self.rect.height))
         self.speed = velocidades['powerUpSpeed']
 
     def update(self):

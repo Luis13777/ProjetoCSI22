@@ -34,10 +34,7 @@ imagens ={}
 arquivoFonte = 'assets/fontes/ARCADE_N.TTF'  
 tamanho_fonte = 36
 
-
-
 fontes = {'fonteScore': {'diretorio': 'assets/fontes/ARCADE_N.TTF', 'tamanho': 36, 'fontePyGame': ''}}
-
 
 velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,
@@ -55,8 +52,6 @@ velocidades = {'mainCharacterSpeed': 10,
                'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,
                'scoreParaGerarBoss': 300,
                'boss1Speed': 2,}
-
-
 
 poderes = {
     'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': powerUpVida},
@@ -79,4 +74,5 @@ killPlayer = pygame.mixer.Sound('assets/sounds/killPlayer.wav')
 critical = pygame.mixer.Sound('assets/sounds/critical.mp3')
 warning = pygame.mixer.Sound('assets/sounds/warning.mp3')
 killObject = pygame.mixer.Sound('assets/sounds/killObject.mp3')
-powerup = pygame.mixer.Sound('assets/sounds/powerup.mp3')
+powerup2 = pygame.mixer.Sound('assets/sounds/powerup2.mp3')
+oneUp = pygame.mixer.Sound('assets/sounds/oneUp.mp3')

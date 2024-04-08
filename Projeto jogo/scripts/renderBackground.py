@@ -1,7 +1,8 @@
 import pygame
 from scripts.dados import *
 
-def renderBackground (tela):
+
+def renderBackground(tela):
     fundo = tela.elementosParaRenderizar['backGround']
     larguraDaImagemFundo = fundo.image.get_width()
     fundo.positionX -= tela.speed

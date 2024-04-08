@@ -9,13 +9,13 @@ from scripts.aumentarDificuldade import *
 from scripts.poderes import *
 from scripts.iniciarBoss import *
 
-def runGame (tela): 
+
+def runGame(tela):
     # Loop principal do jogo
     player = tela.elementosParaRenderizar['mainCharacter']
     running = True
 
     while running:
-
 
         tela.score += 1
         tela.scoreParaGerarObstaculo += 1
@@ -25,7 +25,6 @@ def runGame (tela):
         tela.scoreParaAumentarVelocidadeGeracaoObstaculo += 1
         tela.scoreParaGerarBoss += 1
 
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -33,10 +32,8 @@ def runGame (tela):
         # Preenchendo a tela com a cor branca
         tela.SCREEN.fill(BLACK)
 
-
         renderBackground(tela)
         playerActions(player)
-
 
         if tela.scoreParaGerarObstaculo > velocidades['pontosParaGerarObstaculo']:
             novoObstaculo(tela)
@@ -55,12 +52,8 @@ def runGame (tela):
         aumentarDificuldade(tela)
         # Atualize a posição dos sprites
 
-
-        
         all_sprites.update()
 
-
-        
         # Renderize os sprites na tela
         all_sprites.draw(tela.SCREEN)
 

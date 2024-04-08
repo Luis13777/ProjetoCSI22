@@ -1,5 +1,6 @@
 import os
 
+
 def getImagem (nomeDaImagem):
     script_dir = os.path.dirname(__file__)
     rel_path = f"../assets/image/{nomeDaImagem}"

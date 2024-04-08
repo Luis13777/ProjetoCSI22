@@ -2,6 +2,7 @@ import pygame
 from scripts.dados import *
 from scripts.objetos import *
 
+
 def novoPowerUp(tela):
     novoPoder = PowerUp()
     if 'poder' in tela.elementosParaRenderizar:

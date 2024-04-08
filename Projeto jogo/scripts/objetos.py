@@ -72,7 +72,9 @@ class MainCaracter(pygame.sprite.Sprite):
                 critical.play()
             elif self.vidas == 2:
                 warning.play()
-class janela ():
+
+
+class janela():
     def __init__(self, SCREEN, clock):
         self.SCREEN = SCREEN
         self.clock = clock
@@ -86,13 +88,13 @@ class janela ():
         self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
         self.scoreParaGerarBoss = 1
 
-class backGround ():
+
+class backGround():
     def __init__(self):
         self.positionX = 0
         self.positionY = 0
         self.image = imagens['backGroundImage']
         # self.image = pygame.image.load(getImagem(backGroundImage))
-
 
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageHeight = dimensions["HEIGHT"]*proporcaoDoResto
@@ -100,8 +102,6 @@ class backGround ():
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
 
         self.positionY = dimensions["HEIGHT"] - self.image.get_height()
-
-
 
 
 class Obstaculo(pygame.sprite.Sprite):
@@ -162,13 +162,13 @@ class Explosao(pygame.sprite.Sprite):
         self.rect.center = center
         self.explosionMoment = pygame.time.get_ticks()
         self.explosiomTime = 100
-   
 
     def update(self):
         
         if pygame.time.get_ticks() - self.explosionMoment > self.explosiomTime:
             killObject.play()
             self.kill()
+
 
 class PowerUp(pygame.sprite.Sprite):
     def __init__(self):
@@ -273,7 +273,8 @@ class Boss(pygame.sprite.Sprite):
             self.moveDown()
             if self.rect.bottom >= self.bottom_limit - self.top_limit*2:
                 self.subindo = True
-        
+
+
 class TiroInimigo(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()

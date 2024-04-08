@@ -2,17 +2,14 @@ import pygame
 from scripts.dados import *
 from scripts.objetos import *
 
-def startGame ():
+def startGame():
 
     # Iniciar jogo
     pygame.init()
 
-
-
     # Pegar dimensões do display
     info = pygame.display.Info()
     dimensions["WIDTH"], dimensions["HEIGHT"] = info.current_w, info.current_h
-
 
     # # Criar tela de jogo
     # SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]), pygame.FULLSCREEN)
@@ -29,7 +26,6 @@ def startGame ():
     tela.SCREEN = SCREEN
     tela.clock = clock
 
-
     imagens['mainCharacter'] = pygame.image.load(getImagem(mainCharacterImage)).convert_alpha()
     imagens['backGroundImage'] = pygame.image.load(getImagem(backGroundImage)).convert_alpha()
     imagens['obstaculoImage'] = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
@@ -41,26 +37,21 @@ def startGame ():
     imagens['bossDamaged'] = pygame.image.load(getImagem(bossDamaged)).convert_alpha()
     imagens['bossVeryDamaged'] = pygame.image.load(getImagem(bossVeryDamaged)).convert_alpha()
 
-
     for poder in poderes:
         imagens[poderes[poder]['image']] = pygame.image.load(getImagem(poderes[poder]['imageName'])).convert_alpha()
 
     for fonte in fontes:
         fontes[fonte]['fontePyGame'] = pygame.font.Font(fontes[fonte]['diretorio'], fontes[fonte]['tamanho'])
 
-
     # imagens['powerUpTiro'] = pygame.image.load(getImagem(powerUpTiro)).convert_alpha()
 
-
-
     # Carregar a imagem do fundo
-    fundo = backGround ()
+    fundo = backGround()
 
     tela.elementosParaRenderizar['backGround'] = fundo
     tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
     all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
     mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
-
 
     # Defina o tipo de evento para gerar obstáculos
     # GERAR_OBSTACULOS_EVENTO = pygame.USEREVENT + 1
@@ -77,7 +68,6 @@ def startGame ():
     # pygame.time.set_timer(GERAR_PODER_EVENTO, velocidades['taxaDeGeracaoDePowerUps'])
 
     # eventosTemporarios['gerarPowerUp'] = GERAR_PODER_EVENTO 
-
 
     return tela
 

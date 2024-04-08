@@ -20,8 +20,6 @@ def checkCollision(tela):
     for meteoro in meteoros:
         if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], meteoro):
             tela.elementosParaRenderizar['mainCharacter'].perderVida()
-            
-
 
             # # Criar uma superfície para o círculo
             # circle_surface = pygame.Surface((20, 20), pygame.SRCALPHA)
@@ -44,8 +42,10 @@ def checkCollision(tela):
         if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
             if poder.tipo == 'vida' and tela.elementosParaRenderizar['mainCharacter'].vidas < tela.elementosParaRenderizar['mainCharacter'].maxVidas:
                 tela.elementosParaRenderizar['mainCharacter'].vidas += 1
+                oneUp.play()
             elif poder.tipo == 'tiro':
                 tela.elementosParaRenderizar['mainCharacter'].shoot_delay -= 100
+                powerup2.play()
             poder.kill()
 
     hits = pygame.sprite.groupcollide(tiros, inimigosGroup, True, False)

@@ -1,5 +1,6 @@
 from scripts.dados import *
 
+
 def aumentarDificuldade(tela):
 
     # Aumenta a velocidade vertical do personagem

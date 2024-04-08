@@ -3,4 +3,4 @@ from scripts.runGame import *
 from scripts.dados import *
 
 tela = startGame()
-runGame (tela)
+runGame(tela)

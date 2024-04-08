@@ -44,8 +44,10 @@ def checkCollision(tela):
         if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
             if poder.tipo == 'vida' and tela.elementosParaRenderizar['mainCharacter'].vidas < tela.elementosParaRenderizar['mainCharacter'].maxVidas:
                 tela.elementosParaRenderizar['mainCharacter'].vidas += 1
+                powerup.play()
             elif poder.tipo == 'tiro':
                 tela.elementosParaRenderizar['mainCharacter'].shoot_delay -= 100
+                powerup.play()
             poder.kill()
 
     hits = pygame.sprite.groupcollide(tiros, inimigosGroup, True, False)

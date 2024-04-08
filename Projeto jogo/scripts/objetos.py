@@ -60,11 +60,18 @@ class MainCaracter(pygame.sprite.Sprite):
             tiro = Tiro(self.rect.right, self.rect.centery)
             all_sprites.add(tiro)
             tiros.add(tiro)
+            shot.play()
 
     def perderVida(self):
         if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay:
             self.vidas -= 1
             self.tempoPerdeuVida = pygame.time.get_ticks()
+            if self.vidas == 0:
+                killPlayer.play()
+            elif self.vidas == 1:
+                critical.play()
+            elif self.vidas == 2:
+                warning.play()
 class janela ():
     def __init__(self, SCREEN, clock):
         self.SCREEN = SCREEN
@@ -160,7 +167,7 @@ class Explosao(pygame.sprite.Sprite):
     def update(self):
         
         if pygame.time.get_ticks() - self.explosionMoment > self.explosiomTime:
-   
+            killObject.play()
             self.kill()
 
 class PowerUp(pygame.sprite.Sprite):

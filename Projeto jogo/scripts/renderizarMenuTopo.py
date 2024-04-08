@@ -1,7 +1,7 @@
 import pygame
 from scripts.dados import *
 
-def renderizarMenuTopo (tela):
+def renderizarMenuTopo(tela):
     for i in range(tela.elementosParaRenderizar['mainCharacter'].vidas):
         tela.SCREEN.blit(tela.elementosParaRenderizar['mainCharacter'].imageVidaCheia, (i * tela.elementosParaRenderizar['mainCharacter'].imageVidaCheia.get_width(), 0))
     for i in range(tela.elementosParaRenderizar['mainCharacter'].maxVidas - tela.elementosParaRenderizar['mainCharacter'].vidas):

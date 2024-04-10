@@ -1,6 +1,6 @@
 import pygame
 from scripts.dados import *
-from scripts.getImage import getImagem
+from scripts.getImage import *
 import random
 
 class MainCaracter(pygame.sprite.Sprite):
@@ -10,7 +10,7 @@ class MainCaracter(pygame.sprite.Sprite):
 
         # self.image_location = getImagem(mainCharacterImage)
         # self.image = pygame.image.load(self.image_location).convert_alpha()
-        self.image = imagens['mainCharacter']
+        self.image = imagens['mainCharacter']['imagemPyGame']
         original_image_width, original_image_height = self.image.get_size()
         final_image_width = dimensions["WIDTH"] * 0.05
         final_image_height = original_image_height * final_image_width / original_image_width
@@ -26,7 +26,7 @@ class MainCaracter(pygame.sprite.Sprite):
         self.maxVidas = 3
         self.vidas = 3
 
-        self.imageVidaCheia = imagens['vidaCheia']
+        self.imageVidaCheia = imagens['vidaCheia']['imagemPyGame']
         # self.imageVidaCheia = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
 
         original_image_width, original_image_height = self.imageVidaCheia.get_size()
@@ -34,7 +34,7 @@ class MainCaracter(pygame.sprite.Sprite):
         final_image_height = original_image_height * final_image_width / original_image_width
         self.imageVidaCheia = pygame.transform.scale(self.imageVidaCheia, (final_image_width, final_image_height))
 
-        self.imageVidaVazia = imagens['vidaVazia']
+        self.imageVidaVazia = imagens['vidaVazia']['imagemPyGame']
 
         # self.imageVidaVazia = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
 
@@ -60,18 +60,18 @@ class MainCaracter(pygame.sprite.Sprite):
             tiro = Tiro(self.rect.right, self.rect.centery)
             all_sprites.add(tiro)
             tiros.add(tiro)
-            shot.play()
+            sons['shot']['somPyGame'].play()
 
     def perderVida(self):
         if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay:
             self.vidas -= 1
             self.tempoPerdeuVida = pygame.time.get_ticks()
             if self.vidas == 0:
-                killPlayer.play()
+                sons['killPlayer']['somPyGame'].play()
             elif self.vidas == 1:
-                critical.play()
+                sons['critical']['somPyGame'].play()
             elif self.vidas == 2:
-                warning.play()
+                sons['warning']['somPyGame'].play()
 
 
 class janela():
@@ -93,7 +93,7 @@ class backGround():
     def __init__(self):
         self.positionX = 0
         self.positionY = 0
-        self.image = imagens['backGroundImage']
+        self.image = imagens['backGroundImage']['imagemPyGame']
         # self.image = pygame.image.load(getImagem(backGroundImage))
 
         originalImageWidth, originalImageHeight = self.image.get_size()
@@ -108,7 +108,7 @@ class Obstaculo(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        self.image = imagens['obstaculoImage']
+        self.image = imagens['obstaculoImage']['imagemPyGame']
         # self.image = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * random.uniform(0.05, 0.3)
@@ -128,7 +128,7 @@ class Obstaculo(pygame.sprite.Sprite):
 class Tiro(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image = imagens['tiroImage']
+        self.image = imagens['tiroImage']['imagemPyGame']
         # self.image = pygame.image.load(getImagem(tiroImage)).convert_alpha()  
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * 0.1
@@ -150,7 +150,7 @@ class Explosao(pygame.sprite.Sprite):
     def __init__(self, center, meteoro):
         super().__init__()
 
-        self.image = imagens['explosaoImage']
+        self.image = imagens['explosaoImage']['imagemPyGame']
         # self.image = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
 
         alturaFinal = meteoro[0].image.get_height()
@@ -166,7 +166,7 @@ class Explosao(pygame.sprite.Sprite):
     def update(self):
         
         if pygame.time.get_ticks() - self.explosionMoment > self.explosiomTime:
-            killObject.play()
+            sons['killObject']['somPyGame'].play()
             self.kill()
 
 
@@ -177,7 +177,7 @@ class PowerUp(pygame.sprite.Sprite):
         listaDePoderes = list(poderes)
         novoPoder = listaDePoderes[random.randint(0, len(listaDePoderes) - 1)]
 
-        self.image = imagens[poderes[novoPoder]['image']]
+        self.image = imagens[poderes[novoPoder]['image']]['imagemPyGame']
 
         # self.image = pygame.image.load(getImagem(poderes[novoPoder]['image'])).convert_alpha()
 
@@ -202,7 +202,7 @@ class Boss(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.speed = velocidades['boss1Speed']
-        self.image = imagens['boss']
+        self.image = imagens['boss']['imagemPyGame']
         original_image_width, original_image_height = self.image.get_size()
         final_image_width = dimensions["WIDTH"] * 0.1
         final_image_height = original_image_height * final_image_width / original_image_width
@@ -245,14 +245,14 @@ class Boss(pygame.sprite.Sprite):
             self.tempoPerdeuVida = pygame.time.get_ticks()
 
         if self.vidas == 2:
-            self.image = imagens['bossDamaged']
+            self.image = imagens['bossDamaged']['imagemPyGame']
             original_image_width, original_image_height = self.image.get_size()
             final_image_width = dimensions["WIDTH"] * 0.1
             final_image_height = original_image_height * final_image_width / original_image_width
             self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
 
         if self.vidas == 1:
-            self.image = imagens['bossVeryDamaged']
+            self.image = imagens['bossVeryDamaged']['imagemPyGame']
             original_image_width, original_image_height = self.image.get_size()
             final_image_width = dimensions["WIDTH"] * 0.1
             final_image_height = original_image_height * final_image_width / original_image_width
@@ -278,7 +278,7 @@ class Boss(pygame.sprite.Sprite):
 class TiroInimigo(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image = imagens['tiroImage']
+        self.image = imagens['tiroImage']['imagemPyGame']
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * 0.1
         finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth

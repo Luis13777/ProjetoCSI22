@@ -26,22 +26,39 @@ def startGame():
     tela.SCREEN = SCREEN
     tela.clock = clock
 
-    imagens['mainCharacter'] = pygame.image.load(getImagem(mainCharacterImage)).convert_alpha()
-    imagens['backGroundImage'] = pygame.image.load(getImagem(backGroundImage)).convert_alpha()
-    imagens['obstaculoImage'] = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
-    imagens['tiroImage'] = pygame.image.load(getImagem(tiroImage)).convert_alpha()
-    imagens['explosaoImage'] = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
-    imagens['vidaCheia'] = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
-    imagens['vidaVazia'] = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
-    imagens['boss'] = pygame.image.load(getImagem(boss)).convert_alpha()
-    imagens['bossDamaged'] = pygame.image.load(getImagem(bossDamaged)).convert_alpha()
-    imagens['bossVeryDamaged'] = pygame.image.load(getImagem(bossVeryDamaged)).convert_alpha()
+    for imagem in imagens:
+        imagens[imagem]['imagemPyGame'] = pygame.image.load(getEndereco(imagens[imagem]['diretorio'])).convert_alpha()
+
+    # imagens['mainCharacter'] = pygame.image.load(getImagem(mainCharacterImage)).convert_alpha()
+    # imagens['backGroundImage'] = pygame.image.load(getImagem(backGroundImage)).convert_alpha()
+    # imagens['obstaculoImage'] = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
+    # imagens['tiroImage'] = pygame.image.load(getImagem(tiroImage)).convert_alpha()
+    # imagens['explosaoImage'] = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
+    # imagens['vidaCheia'] = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
+    # imagens['vidaVazia'] = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
+    # imagens['boss'] = pygame.image.load(getImagem(boss)).convert_alpha()
+    # imagens['bossDamaged'] = pygame.image.load(getImagem(bossDamaged)).convert_alpha()
+    # imagens['bossVeryDamaged'] = pygame.image.load(getImagem(bossVeryDamaged)).convert_alpha()
 
     for poder in poderes:
-        imagens[poderes[poder]['image']] = pygame.image.load(getImagem(poderes[poder]['imageName'])).convert_alpha()
+        imagens[poderes[poder]['image']]['imagemPyGame'] = pygame.image.load(getEndereco(poderes[poder]['imageName'])).convert_alpha()
 
     for fonte in fontes:
-        fontes[fonte]['fontePyGame'] = pygame.font.Font(fontes[fonte]['diretorio'], fontes[fonte]['tamanho'])
+        fontes[fonte]['fontePyGame'] = pygame.font.Font(getEndereco(fontes[fonte]['diretorio'], 'fontes'), fontes[fonte]['tamanho'])
+
+
+    pygame.mixer.init()
+
+    for som in sons:
+        sons[som]['somPyGame'] = pygame.mixer.Sound(getEndereco(sons[som]['diretorio'], 'sounds'))
+
+    # sons['shot'] = pygame.mixer.Sound('assets/sounds/shot.wav')
+    # sons['killPlayer'] = pygame.mixer.Sound('assets/sounds/killPlayer.wav')
+    # sons['critical'] = pygame.mixer.Sound('assets/sounds/critical.mp3')
+    # sons['warning'] = pygame.mixer.Sound('assets/sounds/warning.mp3')
+    # sons['killObject'] = pygame.mixer.Sound('assets/sounds/killObject.mp3')
+    # sons['powerup2'] = pygame.mixer.Sound('assets/sounds/powerup2.mp3')
+    # sons['oneUp'] = pygame.mixer.Sound('assets/sounds/oneUp.mp3')
 
     # imagens['powerUpTiro'] = pygame.image.load(getImagem(powerUpTiro)).convert_alpha()
 

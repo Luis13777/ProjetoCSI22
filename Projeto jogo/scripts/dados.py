@@ -1,5 +1,5 @@
 import pygame
-from scripts.getImage import getImagem
+from scripts.getImage import *
 
 gameName = "Jogo CSI22"
 dimensions = {"WIDTH": 1920,
@@ -16,25 +16,27 @@ FPS = 144
 proporcaoDoMenu = 0.1
 proporcaoDoResto = 1 - proporcaoDoMenu
 
-mainCharacterImage = 'nave.png'
-backGroundImage = "space.png"
-obstaculoImage = "meteoro.png"
-tiroImage = "tiro.png"
-explosaoImage = "explosao.png"
-vidaCheia = "vidaCheia.png"
-vidaVazia = "vidaVazia.png"
-powerUpTiro = "poderTiro.png"
-powerUpVida = "vidaCheia.png"
-boss = "inimigo1.png"
-bossDamaged = "inimigo1damaged.png"
-bossVeryDamaged = "inimigo1verydamaged.png"
-imagens ={}
 
 
-arquivoFonte = 'assets/fontes/ARCADE_N.TTF'  
+imagens ={
+    'mainCharacter': {'diretorio': 'nave.png', 'imagemPyGame': ''},
+    'backGroundImage': {'diretorio': 'space.png', 'imagemPyGame': ''},
+    'obstaculoImage': {'diretorio': 'meteoro.png', 'imagemPyGame': ''},
+    'tiroImage': {'diretorio': 'tiro.png', 'imagemPyGame': ''},
+    'explosaoImage': {'diretorio': 'explosao.png', 'imagemPyGame': ''},
+    'vidaCheia': {'diretorio': 'vidaCheia.png', 'imagemPyGame': ''},
+    'vidaVazia': {'diretorio': 'vidaVazia.png', 'imagemPyGame': ''},
+    'boss': {'diretorio': 'inimigo1.png', 'imagemPyGame': ''},
+    'bossDamaged': {'diretorio': 'inimigo1damaged.png', 'imagemPyGame': ''},
+    'bossVeryDamaged': {'diretorio': 'inimigo1verydamaged.png', 'imagemPyGame': ''},
+    'powerUpVida': {'diretorio': 'vidaCheia.png', 'imagemPyGame': ''},
+    'powerUpTiro': {'diretorio': 'poderTiro.png', 'imagemPyGame': ''}}
+
+
+arquivoFonte = 'ARCADE_N.TTF'  
 tamanho_fonte = 36
 
-fontes = {'fonteScore': {'diretorio': 'assets/fontes/ARCADE_N.TTF', 'tamanho': 36, 'fontePyGame': ''}}
+fontes = {'fonteScore': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 36, 'fontePyGame': ''}}
 
 velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,
@@ -54,11 +56,22 @@ velocidades = {'mainCharacterSpeed': 10,
                'boss1Speed': 2,}
 
 poderes = {
-    'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': powerUpVida},
-    'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': powerUpTiro}
+    'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': imagens['powerUpVida']['diretorio']},
+    'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': imagens['powerUpTiro']['diretorio']}
 }
 
-eventosTemporarios = {}
+
+sons = {
+    'shot': {'diretorio': 'shot.wav', 'somPyGame': ''},
+    'killPlayer': {'diretorio': 'killPlayer.wav', 'somPyGame': ''},
+    'critical': {'diretorio': 'critical.mp3', 'somPyGame': ''},
+    'warning': {'diretorio': 'warning.mp3', 'somPyGame': ''},
+    'killObject': {'diretorio': 'killObject.mp3', 'somPyGame': ''},
+    'powerup2': {'diretorio': 'powerup2.mp3', 'somPyGame': ''},
+    'oneUp': {'diretorio': 'oneUp.mp3', 'somPyGame': ''}
+}
+
+
 
 mainCharacter = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
@@ -67,12 +80,3 @@ tirosInimigos = pygame.sprite.Group()
 meteoros = pygame.sprite.Group()
 poderes_grupo = pygame.sprite.Group()
 inimigosGroup = pygame.sprite.Group()
-
-pygame.mixer.init()
-shot = pygame.mixer.Sound('assets/sounds/shot.wav')
-killPlayer = pygame.mixer.Sound('assets/sounds/killPlayer.wav')
-critical = pygame.mixer.Sound('assets/sounds/critical.mp3')
-warning = pygame.mixer.Sound('assets/sounds/warning.mp3')
-killObject = pygame.mixer.Sound('assets/sounds/killObject.mp3')
-powerup2 = pygame.mixer.Sound('assets/sounds/powerup2.mp3')
-oneUp = pygame.mixer.Sound('assets/sounds/oneUp.mp3')

@@ -1,7 +1,6 @@
 from scripts.dados import *
 from scripts.objetos import *
 
-
 # def checkCollision(tela):
 #     for obstaculo in tela.elementosParaRenderizar['obstaculo']:
 #         if obstaculo.positionX - tela.elementosParaRenderizar['mainCharacter'].image.get_width() < tela.elementosParaRenderizar['mainCharacter'].positionX and tela.elementosParaRenderizar['mainCharacter'].positionX  < obstaculo.positionX + obstaculo.image.get_width():
@@ -17,19 +16,20 @@ from scripts.objetos import *
 #                 tela.SCREEN.blit(circle_surface, circle_position)
 
 def checkCollision(tela):
-    for meteoro in meteoros:
-        if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], meteoro):
-            tela.elementosParaRenderizar['mainCharacter'].perderVida()
+    # for meteoro in meteoros:
+    #     if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], meteoro):
+    #         tela.elementosParaRenderizar['mainCharacter'].perderVida()
 
-            # # Criar uma superfície para o círculo
-            # circle_surface = pygame.Surface((20, 20), pygame.SRCALPHA)
-            # pygame.draw.circle(circle_surface, (255, 0, 0), (10, 10), 10)  # Desenhar um círculo vermelho
+    hits = pygame.sprite.groupcollide(mainCharacter, meteoros,  False, True)
+    for hit in hits:
+        nave = hit
+        explosao = Explosao((nave.rect.right, nave.rect.centery), hits[hit])
+        all_sprites.add(explosao)
+        nave.perderVida()
 
-            # # Definir as coordenadas do canto superior direito
-            # circle_position = (0, 0)
+  
+            
 
-            # # Blitar o círculo na tela principal
-            # tela.SCREEN.blit(circle_surface, circle_position)
         
     hits = pygame.sprite.groupcollide(tiros, meteoros, True, True)
     for hit in hits:
@@ -56,3 +56,12 @@ def checkCollision(tela):
         for inimigo in inimigosGroup:
             inimigo.perderVida()
         tela.score += 50
+
+
+    hits = pygame.sprite.groupcollide(tirosInimigos, mainCharacter, True, False)
+    for hit in hits:
+        laser = hit
+        explosao = Explosao((laser.rect.left, laser.rect.centery), hits[hit])
+        all_sprites.add(explosao)
+        for character in mainCharacter:
+            character.perderVida()

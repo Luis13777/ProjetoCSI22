@@ -14,6 +14,6 @@ def iniciarBoss(tela):
 
 def acoesBoss(tela):
     tela.scoreParaGerarBoss = 1
-    for boss in inimigosGroup:
-        boss.update()
+    # for boss in inimigosGroup:
+    #     boss.update()
        

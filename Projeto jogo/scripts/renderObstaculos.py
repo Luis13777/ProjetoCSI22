@@ -1,8 +1,9 @@
-from scripts.dados import *
 from scripts.objetos import *
+from scripts.dados import *
 
 
 def novoObstaculo(tela):
+
     novoObstaculo = Obstaculo()
     if 'obstaculo' in tela.elementosParaRenderizar:
         tela.elementosParaRenderizar['obstaculo'].append(novoObstaculo)

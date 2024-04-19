@@ -1,6 +1,11 @@
 from scripts.inicializar import startGame
 from scripts.runGame import *
 from scripts.dados import  *
+from scripts.menu import *
 
-tela = startGame()
-runGame(tela)
+
+while True:
+    tela = startGame()
+    mainMenu (tela)
+    runGame(tela)
+

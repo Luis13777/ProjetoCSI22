@@ -80,3 +80,4 @@ tirosInimigos = pygame.sprite.Group()
 meteoros = pygame.sprite.Group()
 poderes_grupo = pygame.sprite.Group()
 inimigosGroup = pygame.sprite.Group()
+

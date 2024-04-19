@@ -8,7 +8,7 @@ from scripts.renderizarMenuTopo import *
 from scripts.aumentarDificuldade import *
 from scripts.poderes import *
 from scripts.iniciarBoss import *
-
+from scripts.finalizarJogo import *
 
 def runGame(tela):
     # Loop principal do jogo
@@ -62,6 +62,10 @@ def runGame(tela):
         
         # Controlando a taxa de quadros
         tela.clock.tick(60)
+
+        if player.vidas <= 0:
+            finalizarJogo(tela)
+            return
         
     # Finalizar o Pygame
     pygame.quit()

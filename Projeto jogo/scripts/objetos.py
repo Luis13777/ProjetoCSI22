@@ -94,7 +94,7 @@ class backGround():
         self.positionX = 0
         self.positionY = 0
         self.image = imagens['backGroundImage']['imagemPyGame']
-        # self.image = pygame.image.load(getImagem(backGroundImage))
+
 
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageHeight = dimensions["HEIGHT"]*proporcaoDoResto
@@ -109,14 +109,14 @@ class Obstaculo(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = imagens['obstaculoImage']['imagemPyGame']
-        # self.image = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
+
         originalImageWidth, originalImageHeight = self.image.get_size()
         finalImageWidth = dimensions["WIDTH"] * random.uniform(0.05, 0.3)
         finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
         self.rect.x = dimensions['WIDTH']
-        self.rect.y = random.randint(dimensions['HEIGHT'] * proporcaoDoMenu, dimensions['HEIGHT'] - self.rect.height)
+        self.rect.y = random.randint(int(dimensions['HEIGHT'] * proporcaoDoMenu), int(dimensions['HEIGHT'] - self.rect.height))
         self.speed = velocidades['obstaculoSpeed']
 
     def update(self):
@@ -162,11 +162,12 @@ class Explosao(pygame.sprite.Sprite):
         self.rect.center = center
         self.explosionMoment = pygame.time.get_ticks()
         self.explosiomTime = 100
+        sons['killObject']['somPyGame'].play()
 
     def update(self):
         
         if pygame.time.get_ticks() - self.explosionMoment > self.explosiomTime:
-            sons['killObject']['somPyGame'].play()
+
             self.kill()
 
 
@@ -189,7 +190,7 @@ class PowerUp(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
         self.rect = self.image.get_rect()
         self.rect.x = dimensions['WIDTH']
-        self.rect.y = random.randint(dimensions['HEIGHT'] * proporcaoDoMenu, dimensions['HEIGHT'] - self.rect.height)
+        self.rect.y = random.randint(int(dimensions['HEIGHT'] * proporcaoDoMenu), int(dimensions['HEIGHT'] - self.rect.height))
         self.speed = velocidades['powerUpSpeed']
 
     def update(self):

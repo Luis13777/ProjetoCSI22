@@ -12,7 +12,6 @@ def startGame():
     dimensions["WIDTH"], dimensions["HEIGHT"] = info.current_w, info.current_h
 
     # # Criar tela de jogo
-    # SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]), pygame.FULLSCREEN)
 
     # Crie a tela de jogo sem a opção pygame.FULLSCREEN
     SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]))
@@ -28,17 +27,6 @@ def startGame():
 
     for imagem in imagens:
         imagens[imagem]['imagemPyGame'] = pygame.image.load(getEndereco(imagens[imagem]['diretorio'])).convert_alpha()
-
-    # imagens['mainCharacter'] = pygame.image.load(getImagem(mainCharacterImage)).convert_alpha()
-    # imagens['backGroundImage'] = pygame.image.load(getImagem(backGroundImage)).convert_alpha()
-    # imagens['obstaculoImage'] = pygame.image.load(getImagem(obstaculoImage)).convert_alpha()
-    # imagens['tiroImage'] = pygame.image.load(getImagem(tiroImage)).convert_alpha()
-    # imagens['explosaoImage'] = pygame.image.load(getImagem(explosaoImage)).convert_alpha()
-    # imagens['vidaCheia'] = pygame.image.load(getImagem(vidaCheia)).convert_alpha()
-    # imagens['vidaVazia'] = pygame.image.load(getImagem(vidaVazia)).convert_alpha()
-    # imagens['boss'] = pygame.image.load(getImagem(boss)).convert_alpha()
-    # imagens['bossDamaged'] = pygame.image.load(getImagem(bossDamaged)).convert_alpha()
-    # imagens['bossVeryDamaged'] = pygame.image.load(getImagem(bossVeryDamaged)).convert_alpha()
 
     for poder in poderes:
         imagens[poderes[poder]['image']]['imagemPyGame'] = pygame.image.load(getEndereco(poderes[poder]['imageName'])).convert_alpha()

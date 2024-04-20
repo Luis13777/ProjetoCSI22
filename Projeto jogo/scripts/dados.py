@@ -30,7 +30,8 @@ imagens ={
     'bossDamaged': {'diretorio': 'inimigo1damaged.png', 'imagemPyGame': ''},
     'bossVeryDamaged': {'diretorio': 'inimigo1verydamaged.png', 'imagemPyGame': ''},
     'powerUpVida': {'diretorio': 'vidaCheia.png', 'imagemPyGame': ''},
-    'powerUpTiro': {'diretorio': 'poderTiro.png', 'imagemPyGame': ''}}
+    'powerUpTiro': {'diretorio': 'poderTiro.png', 'imagemPyGame': ''},
+    'box': {'diretorio': 'box.png', 'imagemPyGame': ''}}
 
 
 arquivoFonte = 'ARCADE_N.TTF'  
@@ -53,7 +54,8 @@ velocidades = {'mainCharacterSpeed': 10,
                'scoreParaAumentarVelocidadeObstaculo': 500,
                'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,
                'scoreParaGerarBoss': 300,
-               'boss1Speed': 2,}
+               'boss1Speed': 2,
+               'menuSpeed': 1,}
 
 poderes = {
     'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': imagens['powerUpVida']['diretorio']},

@@ -80,6 +80,7 @@ class janela():
         self.clock = clock
         self.elementosParaRenderizar =  {}
         self.speed = velocidades['janelaSpeed']
+        self.speedMenu = velocidades['menuSpeed']
         self.score = 1
         self.scoreParaGerarObstaculo = 1
         self.scoreParaGerarPoder = 1

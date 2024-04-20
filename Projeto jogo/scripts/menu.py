@@ -10,41 +10,58 @@ def mainMenu(tela):
     fundo = tela.elementosParaRenderizar['backGround']
     larguraDaImagemFundo = fundo.image.get_width()
 
-    # Calcular as coordenadas para centralizar o botão "Start"
-    button_width = 200
-    button_height = 50
-    button_x = (dimensions['WIDTH'] - button_width) // 2
-    button_y = (dimensions['HEIGHT'] - button_height) // 2
 
     # Criar um retângulo para o botão "Start"
-    start_button = pygame.Rect(button_x, button_y, button_width, button_height)
+    start_button = imagens['box']['imagemPyGame']
+    original_image_width, original_image_height = start_button.get_size()
+    final_image_width = dimensions["WIDTH"] * 0.2
+    final_image_height = original_image_height * final_image_width / original_image_width
+    start_button = pygame.transform.scale(start_button, (final_image_width, final_image_height))
+
+    center_x = (dimensions['WIDTH'] - final_image_width) // 2
+    center_y = (dimensions['HEIGHT'] - final_image_height) // 2
 
     # Loop principal do menu
     running = True
     while running:
-        # Desenhar os fundos na tela
-        tela.SCREEN.blit(fundo.image, (fundo.positionX, fundo.positionY))
-        tela.SCREEN.blit(fundo.image, (fundo.positionX + larguraDaImagemFundo, fundo.positionY))
-        tela.SCREEN.blit(fundo.image, (fundo.positionX + 2*larguraDaImagemFundo, fundo.positionY))
-        tela.SCREEN.blit(fundo.image, (fundo.positionX + 3*larguraDaImagemFundo, fundo.positionY))
-
-
-        # Desenhar o botão "Start"
-        pygame.draw.rect(tela.SCREEN, (255, 0, 0), start_button)
-
-        # Desenhar texto no botão "Start"
-        font = fontes['fonteScore']['fontePyGame']
-        start_text = font.render("Start", True, (255, 255, 255))
-        text_rect = start_text.get_rect(center=start_button.center)
-        tela.SCREEN.blit(start_text, text_rect)
-
-        pygame.display.flip()
 
         # Verificar eventos
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
-                if start_button.collidepoint(mouse_pos):
+                mouse_x, mouse_y = event.pos
+
+                button_rect = pygame.Rect(center_x, center_y, int(final_image_width), int(final_image_height))
+                if button_rect.collidepoint(mouse_x, mouse_y):
                     return
+
+
+
+
+
+        # Desenhar os fundos na tela
+        tela.SCREEN.blit(fundo.image, (fundo.positionX, fundo.positionY))
+        tela.SCREEN.blit(fundo.image, (fundo.positionX + larguraDaImagemFundo, fundo.positionY))
+        tela.SCREEN.blit(fundo.image, (fundo.positionX + 2*larguraDaImagemFundo, fundo.positionY))
+        tela.SCREEN.blit(fundo.image, (fundo.positionX + 3*larguraDaImagemFundo, fundo.positionY))
+
+        fundo.positionX -= tela.speedMenu
+        if fundo.positionX <= -larguraDaImagemFundo:
+            fundo.positionX = 0
+
+        # Desenha o botão no centro da tela
+        tela.SCREEN.blit(start_button, (center_x, center_y))
+        
+        # Desenhar texto no botão "Start"
+        font = fontes['fonteScore']['fontePyGame']
+        start_text = font.render("Start", True, (255, 255, 255))
+        text_rect = start_text.get_rect()
+        # Para centralizar o texto no botão
+        text_rect.center = (center_x + final_image_width // 2, center_y + final_image_height // 2)
+        # Desenha o texto na posição centralizada
+        tela.SCREEN.blit(start_text, text_rect)
+
+
+        pygame.display.flip()
+

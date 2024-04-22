@@ -310,11 +310,11 @@ class Boss(pygame.sprite.Sprite):
             self.rect.x -= self.speed
         if self.subindo:
             self.moveUp()
-            if self.rect.top <= self.top_limit*2:
+            if self.rect.top <= dimensions["HEIGHT"]*0.1:
                 self.subindo = False
         else:
             self.moveDown()
-            if self.rect.bottom >= self.bottom_limit - self.top_limit*2:
+            if self.rect.bottom >= dimensions["HEIGHT"]:
                 self.subindo = True
 
 

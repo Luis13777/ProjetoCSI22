@@ -75,6 +75,9 @@ def gameOver(tela):
     return True
 
 def finalizarJogo (tela):
+
+    
+
     del tela
     mainCharacter.empty()
     all_sprites.empty()

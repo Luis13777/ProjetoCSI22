@@ -5,6 +5,11 @@ from scripts.objetos import *
 # Função para o menu principal
 def mainMenu(tela):
 
+
+    for item in velocidades:
+        velocidades[item] = velocidadesDefault[item]
+
+        
     tela.reiniciarTela()
     
     # Carregar a imagem do fundo

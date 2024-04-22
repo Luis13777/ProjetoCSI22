@@ -34,6 +34,7 @@ imagens ={
     'box': {'diretorio': 'box.png', 'imagemPyGame': ''},
     'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
     'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
+    'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
     }
 
 
@@ -65,6 +66,8 @@ velocidades = {'mainCharacterSpeed': 10,
                'scoreParaGerarBoss': 300,
                'boss1Speed': 2,
                'menuSpeed': 1,}
+
+velocidadesDefault = velocidades.copy()
 
 poderes = {
     'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': imagens['powerUpVida']['diretorio']},

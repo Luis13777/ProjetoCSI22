@@ -15,6 +15,17 @@ class MainCaracter(pygame.sprite.Sprite):
         final_image_width = dimensions["WIDTH"] * 0.05
         final_image_height = original_image_height * final_image_width / original_image_width
         self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+
+        self.imageNormal = self.image
+
+        self.imageTransparente = imagens['mainCharacterTransparente']['imagemPyGame']
+        original_image_width, original_image_height = self.image.get_size()
+        final_image_width = dimensions["WIDTH"] * 0.05
+        final_image_height = original_image_height * final_image_width / original_image_width
+        self.imageTransparente = pygame.transform.scale(self.imageTransparente, (final_image_width, final_image_height))
+
+        self.transparente = False
+
         self.rect = self.image.get_rect()
         self.rect.x = dimensions["WIDTH"]*0.1
         self.rect.y = dimensions["HEIGHT"] // 2 - final_image_height / 2
@@ -43,7 +54,8 @@ class MainCaracter(pygame.sprite.Sprite):
         final_image_height = original_image_height * final_image_width / original_image_width
         self.imageVidaVazia = pygame.transform.scale(self.imageVidaVazia, (final_image_width, final_image_height))
 
-        self.vidaDelay = 5000
+        self.vidaDelay = 3000
+        self.delayPiscada = 200
 
     def moveUp(self):
         if self.rect.y > self.top_limit:
@@ -65,6 +77,7 @@ class MainCaracter(pygame.sprite.Sprite):
     def perderVida(self):
         if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay:
             self.vidas -= 1
+            self.transparente = True
             self.tempoPerdeuVida = pygame.time.get_ticks()
             if self.vidas == 0:
                 sons['killPlayer']['somPyGame'].play()
@@ -72,6 +85,21 @@ class MainCaracter(pygame.sprite.Sprite):
                 sons['critical']['somPyGame'].play()
             elif self.vidas == 2:
                 sons['warning']['somPyGame'].play()
+
+    def update(self):
+        if (pygame.time.get_ticks() - self.tempoPerdeuVida < self.vidaDelay):
+            if (pygame.time.get_ticks() - self.tempoPerdeuVida) % self.delayPiscada < self.delayPiscada/2:
+                if self.transparente:
+                    self.transparente = False
+                    self.image = self.imageNormal
+                else:
+                    self.transparente = True
+                    self.image = self.imageTransparente
+        else:
+            if self.transparente:
+                self.transparente = False
+                self.image = self.imageNormal
+
 
 
 class janela():

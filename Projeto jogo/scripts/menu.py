@@ -1,11 +1,23 @@
 import pygame
 from scripts.dados import *
-
+from scripts.objetos import *
 
 # Função para o menu principal
 def mainMenu(tela):
 
+    tela.reiniciarTela()
+    
+    # Carregar a imagem do fundo
+    fundo = backGround()
 
+    tela.elementosParaRenderizar['backGround'] = fundo
+    tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
+    all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
+    mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
+
+    # Preenchendo a tela com a cor branca
+    tela.SCREEN.fill(BLACK)
+    
     # Carregar a imagem de fundo do menu
     fundo = tela.elementosParaRenderizar['backGround']
     larguraDaImagemFundo = fundo.image.get_width()

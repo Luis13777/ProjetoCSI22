@@ -4,8 +4,8 @@ from scripts.dados import  *
 from scripts.menu import *
 
 
+tela = startGame()
 while True:
-    tela = startGame()
     mainMenu (tela)
     runGame(tela)
 

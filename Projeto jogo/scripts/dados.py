@@ -31,13 +31,22 @@ imagens ={
     'bossVeryDamaged': {'diretorio': 'inimigo1verydamaged.png', 'imagemPyGame': ''},
     'powerUpVida': {'diretorio': 'vidaCheia.png', 'imagemPyGame': ''},
     'powerUpTiro': {'diretorio': 'poderTiro.png', 'imagemPyGame': ''},
-    'box': {'diretorio': 'box.png', 'imagemPyGame': ''}}
+    'box': {'diretorio': 'box.png', 'imagemPyGame': ''},
+    'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
+    'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
+    }
 
 
 arquivoFonte = 'ARCADE_N.TTF'  
 tamanho_fonte = 36
 
-fontes = {'fonteScore': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 36, 'fontePyGame': ''}}
+fontes = {
+    'fonteScore': {'diretorio': 'ARCADE_N.TTF',   'tamanho': 36, 'fontePyGame': ''},
+    'fonteGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 20, 'fontePyGame': ''},
+    'fonteScoreGameOver': {'diretorio': 'ARCADE_N.TTF',   'tamanho': 45, 'fontePyGame': ''},
+    'fonteGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 20, 'fontePyGame': ''},
+    'fonteBigGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 70, 'fontePyGame': ''},
+          }
 
 velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,

@@ -89,6 +89,18 @@ class janela():
         self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
         self.scoreParaGerarBoss = 1
 
+    def reiniciarTela(self):
+        self.elementosParaRenderizar =  {}
+        self.speed = velocidades['janelaSpeed']
+        self.speedMenu = velocidades['menuSpeed']
+        self.score = 1
+        self.scoreParaGerarObstaculo = 1
+        self.scoreParaGerarPoder = 1
+        self.scoreParaAumentarVelocidadeObstaculo = 1
+        self.scoreParaAumentarVelocidade = 1
+        self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
+        self.scoreParaGerarBoss = 1
+
 
 class backGround():
     def __init__(self):
@@ -238,6 +250,7 @@ class Boss(pygame.sprite.Sprite):
         if now - self.last_shot > self.shoot_delay:
             self.last_shot = now
             tiro = TiroInimigo(self.rect.right, self.rect.centery)
+            sons['shot']['somPyGame'].play()
             all_sprites.add(tiro)
             tirosInimigos.add(tiro)
 

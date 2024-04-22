@@ -50,13 +50,13 @@ def startGame():
 
     # imagens['powerUpTiro'] = pygame.image.load(getImagem(powerUpTiro)).convert_alpha()
 
-    # Carregar a imagem do fundo
-    fundo = backGround()
+    # # Carregar a imagem do fundo
+    # fundo = backGround()
 
-    tela.elementosParaRenderizar['backGround'] = fundo
-    tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
-    all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
-    mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
+    # tela.elementosParaRenderizar['backGround'] = fundo
+    # tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
+    # all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
+    # mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
 
     # Defina o tipo de evento para gerar obstáculos
     # GERAR_OBSTACULOS_EVENTO = pygame.USEREVENT + 1

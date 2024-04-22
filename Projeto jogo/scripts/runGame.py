@@ -64,6 +64,8 @@ def runGame(tela):
         tela.clock.tick(60)
 
         if player.vidas <= 0:
+            while gameOver(tela):
+                pass
             finalizarJogo(tela)
             return
         

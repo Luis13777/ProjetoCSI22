@@ -1,9 +1,10 @@
 import pygame
-from scripts.getImage import *
 
+# dados brutos
 gameName = "Jogo CSI22"
 dimensions = {"WIDTH": 1920,
 "HEIGHT": 1080}
+FPS = 144
 
 # Cores
 WHITE = (255, 255, 255)
@@ -11,13 +12,28 @@ BLACK = (0, 0, 0)
 AMARELO = (255, 255, 0)
 AZUL_CLARO = (173, 216, 230)
 
-FPS = 144
+# características do layout
+layout = {
+    'proporcaoDoMenu': dimensions["HEIGHT"]*0.1,
+    'proporcaoDoResto': dimensions["HEIGHT"]*0.9,
+    'posicaoDaNaveX': dimensions["WIDTH"]*0.1,
+    'posicaoDaNaveY': dimensions["HEIGHT"]*0.5,
+    'limiteInferior': dimensions["HEIGHT"],
+    'larguraCoracao': dimensions["WIDTH"]*0.05,
+    'fundo': dimensions["HEIGHT"],
+    'larguraTiro': dimensions["WIDTH"] * 0.1,
+    'larguraDoPoder': dimensions["WIDTH"] * 0.05,
 
-proporcaoDoMenu = 0.1
-proporcaoDoResto = 1 - proporcaoDoMenu
+}
+
+infos = {
+    'maxVidas': 3,
+    'tempoDeExplosao': 100,
 
 
+}
 
+# imagens para serem carregadas
 imagens ={
     'mainCharacter': {'diretorio': 'nave.png', 'imagemPyGame': ''},
     'backGroundImage': {'diretorio': 'space.png', 'imagemPyGame': ''},
@@ -37,9 +53,8 @@ imagens ={
     'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
     }
 
-
+# fontes para serem carregadas
 arquivoFonte = 'ARCADE_N.TTF'  
-tamanho_fonte = 36
 
 fontes = {
     'fonteScore': {'diretorio': 'ARCADE_N.TTF',   'tamanho': 36, 'fontePyGame': ''},
@@ -49,6 +64,7 @@ fontes = {
     'fonteBigGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 70, 'fontePyGame': ''},
           }
 
+# velocidades dos elementos
 velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,
                'obstaculoSpeed': 15,
@@ -62,19 +78,25 @@ velocidades = {'mainCharacterSpeed': 10,
                'minPontosParaGerarObstaculo': 9,
                'scoreParaAumentarVelocidade': 500,
                'scoreParaAumentarVelocidadeObstaculo': 500,
-               'scoreParaAumentarVelocidadeGeracaoObstaculo': 400,
+               'scoreParaAumentarVelocidadeGeracaoObstaculo': 300,
                'scoreParaGerarBoss': 300,
                'boss1Speed': 2,
-               'menuSpeed': 1,}
+               'menuSpeed': 1,
+               'shootDelay': 1000,
+               'scoreParaPerderOutraVida': 3000,
+               'delayPiscada': 200,
+               }
 
+# dicionario reserva para resetar o jogo
 velocidadesDefault = velocidades.copy()
 
+# poderes que podem ser adquiridos
 poderes = {
     'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': imagens['powerUpVida']['diretorio']},
     'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': imagens['powerUpTiro']['diretorio']}
 }
 
-
+# sons que podem ser tocados
 sons = {
     'shot': {'diretorio': 'shot.wav', 'somPyGame': ''},
     'killPlayer': {'diretorio': 'killPlayer.wav', 'somPyGame': ''},
@@ -85,8 +107,7 @@ sons = {
     'oneUp': {'diretorio': 'oneUp.mp3', 'somPyGame': ''}
 }
 
-
-
+# grupos de sprites
 mainCharacter = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 tiros = pygame.sprite.Group()

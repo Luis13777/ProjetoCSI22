@@ -85,3 +85,5 @@ def finalizarJogo (tela):
     meteoros.empty()
     poderes_grupo.empty()
     inimigosGroup.empty()
+    estrelas.empty()
+    elementosDefundo.empty()

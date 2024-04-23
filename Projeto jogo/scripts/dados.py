@@ -45,7 +45,8 @@ infos = {
 imagens ={
     'mainCharacter': {'diretorio': 'nave.png', 'imagemPyGame': ''},
     'backGroundImage': {'diretorio': 'space.png', 'imagemPyGame': ''},
-    'obstaculoImage': {'diretorio': 'meteoro.png', 'imagemPyGame': ''},
+    'obstaculoImage1': {'diretorio': 'meteoro.png', 'imagemPyGame': ''},
+    'obstaculoImage2': {'diretorio': 'meteoro2.png', 'imagemPyGame': ''},
     'tiroImage': {'diretorio': 'tiro.png', 'imagemPyGame': ''},
     'explosaoImage': {'diretorio': 'explosao.png', 'imagemPyGame': ''},
     'vidaCheia': {'diretorio': 'vidaCheia.png', 'imagemPyGame': ''},
@@ -59,7 +60,6 @@ imagens ={
     'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
     'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
     'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
-    'obstaculoImage2': {'diretorio': 'meteoro2.png', 'imagemPyGame': ''},
     'backgorundElement1': {'diretorio': 'backgorundElement1.png', 'imagemPyGame': ''},
     'backgorundElement2': {'diretorio': 'backgorundElement2.png', 'imagemPyGame': ''},
     'backgorundElement3': {'diretorio': 'backgorundElement3.png', 'imagemPyGame': ''},
@@ -67,8 +67,6 @@ imagens ={
     'backgorundElement5': {'diretorio': 'backgorundElement5.png', 'imagemPyGame': ''},
     'estrela1': {'diretorio': 'estrela1.png', 'imagemPyGame': ''},
     'estrela2': {'diretorio': 'estrela2.png', 'imagemPyGame': ''},
-
-
     }
 
 # fontes para serem carregadas

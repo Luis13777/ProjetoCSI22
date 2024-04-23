@@ -132,7 +132,10 @@ class Obstaculo(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        self.image = carregarImagemRedimencionada(imagens['obstaculoImage']['imagemPyGame'], dimensions["WIDTH"] * random.uniform(0.05, 0.3))
+        # Sorteia um número entre 2 e 5
+        numero_aleatorio = random.randint(1, 2)
+
+        self.image = carregarImagemRedimencionada(imagens[f'obstaculoImage{numero_aleatorio}']['imagemPyGame'], dimensions["WIDTH"] * random.uniform(0.05, 0.3))
         
         self.rect = self.image.get_rect()
         self.rect.left = dimensions['WIDTH']
@@ -158,7 +161,7 @@ class ElementoBackGround(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left = dimensions['WIDTH']
         self.rect.y = random.randint(int(layout['proporcaoDoMenu']), int(dimensions['HEIGHT'] - self.rect.height))
-        self.speed = velocidades['janelaSpeed']*0.5
+        self.speed = velocidades['janelaSpeed']
 
     def update(self):
         self.rect.x -= self.speed
@@ -179,7 +182,7 @@ class Estrela(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left = dimensions['WIDTH']
         self.rect.y = random.randint(int(layout['proporcaoDoMenu']), int(dimensions['HEIGHT'] - self.rect.height))
-        self.speed = velocidades['obstaculoSpeed']*1.5
+        self.speed = velocidades['janelaSpeed']
 
     def update(self):
         self.rect.x -= self.speed
@@ -236,11 +239,6 @@ class PowerUp(pygame.sprite.Sprite):
         self.rect.x -= self.speed
         if self.rect.right < 0:
             self.kill()
-
-
-
-
-
 
 class Boss(pygame.sprite.Sprite):
     def __init__(self):
@@ -310,7 +308,6 @@ class Boss(pygame.sprite.Sprite):
             self.moveDown()
             if self.rect.bottom >= layout['fundo']:
                 self.subindo = True
-
 
 class TiroInimigo(pygame.sprite.Sprite):
     def __init__(self, x, y):

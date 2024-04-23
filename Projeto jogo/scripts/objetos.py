@@ -67,6 +67,12 @@ class MainCaracter(pygame.sprite.Sprite):
             elif self.vidas == 2:
                 sons['warning']['somPyGame'].play()
 
+    def morto(self):
+        if self.vidas <= 0:
+            return True
+        return False
+
+
     def update(self):
         if (pygame.time.get_ticks() - self.tempoPerdeuVida < self.vidaDelay):
             if (pygame.time.get_ticks() - self.tempoPerdeuVida) % self.delayPiscada < self.delayPiscada/2:
@@ -80,6 +86,7 @@ class MainCaracter(pygame.sprite.Sprite):
             if self.transparente:
                 self.transparente = False
                 self.image = self.imageNormal
+
 
 class janela():
     def __init__(self, SCREEN, clock):
@@ -193,20 +200,20 @@ class Boss(pygame.sprite.Sprite):
         super().__init__()
         self.speed = velocidades['boss1Speed']
         self.image = imagens['boss']['imagemPyGame']
-        original_image_width, original_image_height = self.image.get_size()
-        final_image_width = dimensions["WIDTH"] * 0.1
-        final_image_height = original_image_height * final_image_width / original_image_width
-        self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+
+        self.image = carregarImagemRedimencionada(imagens['boss']['imagemPyGame'], layout['larguraDoBoss'])
+        
         self.top_limit = layout['proporcaoDoMenu']
-        self.bottom_limit = dimensions["HEIGHT"]
+        self.bottom_limit = layout['fundo']
+
         self.rect = self.image.get_rect()
         self.rect.left = dimensions["WIDTH"]
-        self.rect.centery = dimensions["HEIGHT"] // 2
+        self.rect.centery = dimensions["HEIGHT"] / 2
         self.last_shot = pygame.time.get_ticks()  # Armazena o momento do último tiro
-        self.shoot_delay = 1000  # Delay em milissegundos entre os tiros
+        self.shoot_delay = velocidades['tempoDeDelayTiroBoss']  # Delay em milissegundos entre os tiros
         self.tempoPerdeuVida = pygame.time.get_ticks()
-        self.vidas = 3
-        self.vidaDelay = 1000
+        self.vidas = infos['maxVidasBoss']
+        self.vidaDelay = velocidades['scoreParaPerderOutraVidaBoss']
         self.subindo = True
 
     def moveUp(self):
@@ -236,44 +243,34 @@ class Boss(pygame.sprite.Sprite):
             self.tempoPerdeuVida = pygame.time.get_ticks()
 
         if self.vidas == 2:
-            self.image = imagens['bossDamaged']['imagemPyGame']
-            original_image_width, original_image_height = self.image.get_size()
-            final_image_width = dimensions["WIDTH"] * 0.1
-            final_image_height = original_image_height * final_image_width / original_image_width
-            self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
-
+            self.image = carregarImagemRedimencionada(imagens['bossDamaged']['imagemPyGame'], layout['larguraDoBoss'])
+           
         if self.vidas == 1:
-            self.image = imagens['bossVeryDamaged']['imagemPyGame']
-            original_image_width, original_image_height = self.image.get_size()
-            final_image_width = dimensions["WIDTH"] * 0.1
-            final_image_height = original_image_height * final_image_width / original_image_width
-            self.image = pygame.transform.scale(self.image, (final_image_width, final_image_height))
+            self.image = carregarImagemRedimencionada(imagens['bossVeryDamaged']['imagemPyGame'], layout['larguraDoBoss'])
 
         if self.vidas <= 0:
             self.kill()
 
     def update(self):
         self.shoot()
-        if self.rect.right > dimensions["WIDTH"]*0.9:  
+        if self.rect.right > layout['posicaoXBoss']:  
             self.rect.x -= self.speed
         if self.subindo:
             self.moveUp()
-            if self.rect.top <= dimensions["HEIGHT"]*0.1:
+            if self.rect.top <= layout['proporcaoDoMenu']:
                 self.subindo = False
         else:
             self.moveDown()
-            if self.rect.bottom >= dimensions["HEIGHT"]:
+            if self.rect.bottom >= layout['fundo']:
                 self.subindo = True
 
 
 class TiroInimigo(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image = imagens['tiroImage']['imagemPyGame']
-        originalImageWidth, originalImageHeight = self.image.get_size()
-        finalImageWidth = dimensions["WIDTH"] * 0.1
-        finalImageHeight = originalImageHeight * finalImageWidth / originalImageWidth
-        self.image = pygame.transform.scale(self.image, (finalImageWidth, finalImageHeight))
+        self.image = carregarImagemRedimencionada(imagens['tiroImage']['imagemPyGame'], layout['larguraTiro'])
+
+        
         self.image = pygame.transform.rotate(self.image, 180)
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)

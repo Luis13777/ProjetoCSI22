@@ -1,29 +1,28 @@
 import pygame
 from scripts.dados import *
 from scripts.renderBackground import *
-from scripts.renderObstaculos import *
+# from scripts.renderObstaculos import *
 from scripts.checkCollision import *
-from scripts.playerAction import *
+from scripts.funcoesRunGame import *
 from scripts.renderizarMenuTopo import *
 from scripts.aumentarDificuldade import *
-from scripts.poderes import *
-from scripts.iniciarBoss import *
+# from scripts.poderes import *
+# from scripts.iniciarBoss import *
 from scripts.finalizarJogo import *
+
+
+
+
 
 def runGame(tela):
     # Loop principal do jogo
     player = tela.elementosParaRenderizar['mainCharacter']
+    
     running = True
 
     while running:
 
-        tela.score += 1
-        tela.scoreParaGerarObstaculo += 1
-        tela.scoreParaAumentarVelocidade += 1
-        tela.scoreParaAumentarVelocidadeObstaculo += 1
-        tela.scoreParaGerarPoder += 1
-        tela.scoreParaAumentarVelocidadeGeracaoObstaculo += 1
-        tela.scoreParaGerarBoss += 1
+        aumentarScore(tela)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -35,21 +34,12 @@ def runGame(tela):
         renderBackground(tela)
         playerActions(player)
 
-        if tela.scoreParaGerarObstaculo > velocidades['pontosParaGerarObstaculo']:
-            novoObstaculo(tela)
-            tela.scoreParaGerarObstaculo = 1
-        if tela.scoreParaGerarPoder > velocidades['pontosParaGerarPoder']:
-            novoPowerUp(tela)
-            tela.scoreParaGerarPoder = 1
-        if tela.scoreParaGerarBoss > velocidades['scoreParaGerarBoss']:
-            iniciarBoss(tela)
-            tela.scoreParaGerarBoss = 1
-        if inimigosGroup:
-            acoesBoss(tela)
+        eventosJogo(tela)
 
         checkCollision(tela)
         renderizarMenuTopo(tela)
         aumentarDificuldade(tela)
+        
         # Atualize a posição dos sprites
 
         all_sprites.update()
@@ -63,7 +53,7 @@ def runGame(tela):
         # Controlando a taxa de quadros
         tela.clock.tick(60)
 
-        if player.vidas <= 0:
+        if player.morto():
             while gameOver(tela):
                 pass
             finalizarJogo(tela)

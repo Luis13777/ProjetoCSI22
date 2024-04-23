@@ -23,12 +23,18 @@ layout = {
     'fundo': dimensions["HEIGHT"],
     'larguraTiro': dimensions["WIDTH"] * 0.1,
     'larguraDoPoder': dimensions["WIDTH"] * 0.05,
-
+    'larguraDoBoss': dimensions["WIDTH"] * 0.1,
+    'posicaoXBoss': dimensions["WIDTH"] * 0.9,
+    'larguraBotaoStart': dimensions["WIDTH"] * 0.2,
 }
 
 infos = {
     'maxVidas': 3,
     'tempoDeExplosao': 100,
+    'maxVidasBoss': 3,
+    'pontosPorAcertarBoss': 100,
+    'pontosPorDestruirObstaculo': 50,
+    'tempoDeMenosDelayPowerUpTiro': 100,
 
 
 }
@@ -51,6 +57,8 @@ imagens ={
     'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
     'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
     'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
+
+
     }
 
 # fontes para serem carregadas
@@ -84,7 +92,11 @@ velocidades = {'mainCharacterSpeed': 10,
                'menuSpeed': 1,
                'shootDelay': 1000,
                'scoreParaPerderOutraVida': 3000,
-               'delayPiscada': 200,
+               'delayPiscada': 200,'tempoDeDelayTiroBoss': 1000,
+               'scoreParaPerderOutraVidaBoss': 1000,
+
+
+
                }
 
 # dicionario reserva para resetar o jogo

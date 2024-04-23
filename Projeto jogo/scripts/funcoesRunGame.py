@@ -6,15 +6,11 @@ from scripts.iniciarBoss import *
 
 
 def aumentarScore(tela):
-    tela.score += 1
-    tela.scoreParaGerarObstaculo += 1
-    tela.scoreParaAumentarVelocidade += 1
-    tela.scoreParaAumentarVelocidadeObstaculo += 1
-    tela.scoreParaGerarPoder += 1
-    tela.scoreParaAumentarVelocidadeGeracaoObstaculo += 1
-    tela.scoreParaGerarBoss += 1
-    tela.scoreParaGerarElementoDeFundo += 1
-    tela.scoreParaGerarEstrela += 1
+
+    for score in tela.scores:
+        tela.scores[score] += 1
+
+
 
 def playerActions(player):
     # Verificando teclas pressionadas
@@ -27,14 +23,14 @@ def playerActions(player):
         player.shoot()
 
 def eventosJogo(tela):
-    if tela.scoreParaGerarObstaculo > velocidades['pontosParaGerarObstaculo']:
+    if tela.scores['scoreParaGerarObstaculo'] > velocidades['pontosParaGerarObstaculo']:
         novoObstaculo(tela)
-        tela.scoreParaGerarObstaculo = 1
-    if tela.scoreParaGerarPoder > velocidades['pontosParaGerarPoder']:
+        tela.scores['scoreParaGerarObstaculo'] = 1
+    if tela.scores['scoreParaGerarPoder'] > velocidades['pontosParaGerarPoder']:
         novoPowerUp(tela)
-        tela.scoreParaGerarPoder = 1
-    if tela.scoreParaGerarBoss > velocidades['scoreParaGerarBoss']:
+        tela.scores['scoreParaGerarPoder'] = 1
+    if tela.scores['scoreParaGerarBoss'] > velocidades['scoreParaGerarBoss']:
         iniciarBoss(tela)
-        tela.scoreParaGerarBoss = 1
+        tela.scores['scoreParaGerarBoss'] = 1
     if inimigosGroup:
         acoesBoss(tela)

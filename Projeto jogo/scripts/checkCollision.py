@@ -24,7 +24,7 @@ def checkCollision(tela):
         all_sprites.add(explosao)
         explosaoGroup.add(explosao)
 
-        tela.score += infos['pontosPorDestruirObstaculo']
+        tela.scores['score'] += infos['pontosPorDestruirObstaculo']
 
     for poder in poderes_grupo:
         if pygame.sprite.collide_mask(tela.elementosParaRenderizar['mainCharacter'], poder):
@@ -45,7 +45,7 @@ def checkCollision(tela):
 
         for inimigo in inimigosGroup:
             inimigo.perderVida()
-        tela.score += infos['pontosPorAcertarBoss']
+        tela.scores['score'] += infos['pontosPorAcertarBoss']
 
 
     hits = pygame.sprite.groupcollide(tirosInimigos, mainCharacter, True, False)

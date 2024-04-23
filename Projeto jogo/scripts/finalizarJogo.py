@@ -53,7 +53,7 @@ def gameOver(tela):
 
 
         font = fontes['fonteScoreGameOver']['fontePyGame']
-        start_text = font.render(f"Score: {tela.score}", True, (255, 255, 255))
+        start_text = font.render(f"Score: {tela.scores['score']}", True, (255, 255, 255))
         text_rect = start_text.get_rect()
         # Para centralizar o texto no botão
         text_rect.center = (center_x_box + final_image_width // 2, dimensions['HEIGHT']*0.475)
@@ -76,7 +76,7 @@ def finalizarJogo (tela):
 
     
 
-    del tela
+    # del tela
     mainCharacter.empty()
     all_sprites.empty()
     explosaoGroup.empty()

@@ -81,6 +81,24 @@ fontes = {
     'fonteTituloJogo': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 100, 'fontePyGame': ''},
           }
 
+# scores que a tela estara contabilizando
+scores = {
+    'score': 1,
+    'scoreParaGerarObstaculo': 1,
+    'scoreParaGerarPoder': 1,
+    'scoreParaAumentarVelocidade': 1,
+    'scoreParaAumentarVelocidadeObstaculo': 1,
+    'scoreParaAumentarVelocidadeGeracaoObstaculo': 1,
+    'scoreParaGerarBoss': 1,
+    'scoreParaPerderOutraVida': 1,
+    'scoreParaPerderOutraVidaBoss': 1,
+    'scoreParaGerarElementoDeFundo': 1,
+    'scoreParaGerarEstrela': 1,
+    'scoreParaGerarElementoDeFundo': 1,
+    'scoreParaGerarEstrela': 1,
+}
+
+
 # velocidades dos elementos
 velocidades = {'mainCharacterSpeed': 10, 
                'janelaSpeed': 10,

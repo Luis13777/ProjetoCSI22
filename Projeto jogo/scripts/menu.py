@@ -16,7 +16,7 @@ def mainMenu(tela):
     fundo = backGround()
 
     tela.elementosParaRenderizar['backGround'] = fundo
-    tela.elementosParaRenderizar['mainCharacter'] = MainCaracter()
+    tela.elementosParaRenderizar['mainCharacter'] = MainCharacter()
     all_sprites.add(tela.elementosParaRenderizar['mainCharacter'])
     mainCharacter.add(tela.elementosParaRenderizar['mainCharacter'])
 

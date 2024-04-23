@@ -4,22 +4,24 @@ from scripts.dados import *
 def aumentarDificuldade(tela):
 
     # Aumenta a velocidade vertical do personagem
-    if tela.scoreParaAumentarVelocidade > velocidades['scoreParaAumentarVelocidade'] and tela.elementosParaRenderizar['mainCharacter'].speed < velocidades['maxMainCharacterSpeed']:
+    if tela.scores['scoreParaAumentarVelocidade'] > velocidades['scoreParaAumentarVelocidade'] and tela.elementosParaRenderizar['mainCharacter'].speed < velocidades['maxMainCharacterSpeed']:
         tela.elementosParaRenderizar['mainCharacter'].speed *= 1.1
-        tela.scoreParaAumentarVelocidade = 1
+        tela.scores['scoreParaAumentarVelocidade'] = 1
 
     # Aumenta a velocidade do fundo
-    if tela.speed < velocidades['maxTelaSpeed']:
-        tela.speed *= 1.0001
+    if velocidades['janelaSpeed'] < velocidades['maxTelaSpeed']:
+        velocidades['janelaSpeed'] *= 1.0001
+    # if tela.speed < velocidades['maxTelaSpeed']:
+    #     tela.speed *= 1.0001
 
     # Aumenta a velocidade dos obstaculos
-    if tela.scoreParaAumentarVelocidadeObstaculo > velocidades['scoreParaAumentarVelocidadeObstaculo'] and velocidades['obstaculoSpeed'] < velocidades['maxObstaculoSpeed']:
+    if tela.scores['scoreParaAumentarVelocidadeObstaculo'] > velocidades['scoreParaAumentarVelocidadeObstaculo'] and velocidades['obstaculoSpeed'] < velocidades['maxObstaculoSpeed']:
         velocidades['obstaculoSpeed'] *= 1.1
-        tela.scoreParaAumentarVelocidadeObstaculo = 1
+        tela.scores['scoreParaAumentarVelocidadeObstaculo'] = 1
 
     # Diminui a quantidade de pontos necessarios para gerar um obstaculo
-    if tela.scoreParaAumentarVelocidadeGeracaoObstaculo > velocidades['scoreParaAumentarVelocidadeGeracaoObstaculo'] and velocidades['pontosParaGerarObstaculo'] > velocidades['minPontosParaGerarObstaculo']:
+    if tela.scores['scoreParaAumentarVelocidadeGeracaoObstaculo'] > velocidades['scoreParaAumentarVelocidadeGeracaoObstaculo'] and velocidades['pontosParaGerarObstaculo'] > velocidades['minPontosParaGerarObstaculo']:
         velocidades['pontosParaGerarObstaculo'] *= 0.9
-        tela.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
+        tela.scores['scoreParaAumentarVelocidadeGeracaoObstaculo'] = 1
         
    

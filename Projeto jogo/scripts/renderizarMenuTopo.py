@@ -10,7 +10,7 @@ def renderizarMenuTopo(tela):
     # # Renderizar o texto "Score:" na tela
     fonte = fontes['fonteScore']['fontePyGame']
 
-    texto_score = fonte.render("Score: " + str(int(tela.score)), True, (255, 255, 255))
+    texto_score = fonte.render("Score: " + str(int(tela.scores['score'])), True, (255, 255, 255))
     largura_texto = texto_score.get_width()
     altura_texto = texto_score.get_height()
     

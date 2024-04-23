@@ -54,8 +54,6 @@ class MainCharacter(Character):
 
         self.speed = velocidades['mainCharacterSpeed']
         self.image = carregarImagemRedimencionada(imagens['mainCharacter']['imagemPyGame'], dimensions["WIDTH"] * 0.05)
-        self.imageTransparente = carregarImagemRedimencionada(imagens['mainCharacterTransparente']['imagemPyGame'], dimensions["WIDTH"] * 0.05)
-        self.imageNormal = self.image
         self.transparente = False
         self.rect = self.image.get_rect()
         self.rect.left = layout['posicaoDaNaveX']
@@ -65,6 +63,7 @@ class MainCharacter(Character):
         self.vidas = self.maxVidas
         self.vidaDelay = velocidades['scoreParaPerderOutraVida']
         self.delayPiscada = velocidades['delayPiscada']
+
         self.imageVidaCheia  = carregarImagemRedimencionada(imagens['vidaCheia']['imagemPyGame'], layout['larguraCoracao'])
         self.imageVidaVazia = carregarImagemRedimencionada(imagens['vidaVazia']['imagemPyGame'], layout['larguraCoracao'])
 
@@ -100,14 +99,17 @@ class MainCharacter(Character):
             if (pygame.time.get_ticks() - self.tempoPerdeuVida) % self.delayPiscada < self.delayPiscada/2:
                 if self.transparente:
                     self.transparente = False
-                    self.image = self.imageNormal
+                    self.image.set_alpha(255)
+                    
                 else:
                     self.transparente = True
-                    self.image = self.imageTransparente
+                    self.image.set_alpha(128)
+
         else:
             if self.transparente:
                 self.transparente = False
-                self.image = self.imageNormal
+                self.image.set_alpha(255)
+
 
 class Boss(Character):
     def __init__(self):

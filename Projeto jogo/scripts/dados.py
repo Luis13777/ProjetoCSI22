@@ -25,7 +25,7 @@ layout = {
     'larguraDoPoder': dimensions["WIDTH"] * 0.05,
     'larguraDoBoss': dimensions["WIDTH"] * 0.1,
     'posicaoXBoss': dimensions["WIDTH"] * 0.9,
-    'larguraBotaoStart': dimensions["WIDTH"] * 0.2,
+    'larguraBotaoStart': dimensions["WIDTH"] * 0.3,
     'larguraElementosDeFundo': dimensions["WIDTH"] * 0.07,
     'larguraEstrela': dimensions["WIDTH"] * 0.02,
 }
@@ -41,8 +41,24 @@ infos = {
 
 }
 
+skinsNave = {
+    'mainCharacter': {'diretorio': 'nave.png', 'imagemPyGame': ''},
+    'mainCharacter2': {'diretorio': 'nave2.png', 'imagemPyGame': ''},
+    'mainCharacter3': {'diretorio': 'nave3.png', 'imagemPyGame': ''},
+    'mainCharacter4': {'diretorio': 'nave4.png', 'imagemPyGame': ''},
+    'mainCharacter5': {'diretorio': 'nave5.png', 'imagemPyGame': ''},
+    'mainCharacter6': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+    'mainCharacter7': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+    'mainCharacter8': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+    'mainCharacter9': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+    'mainCharacter10': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+}
+
+
+
+
 # imagens para serem carregadas
-imagens ={
+imagens = {
     'mainCharacter': {'diretorio': 'nave.png', 'imagemPyGame': ''},
     'backGroundImage': {'diretorio': 'space.png', 'imagemPyGame': ''},
     'obstaculoImage1': {'diretorio': 'meteoro.png', 'imagemPyGame': ''},
@@ -59,7 +75,6 @@ imagens ={
     'box': {'diretorio': 'box.png', 'imagemPyGame': ''},
     'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
     'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
-    'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
     'backgorundElement1': {'diretorio': 'backgorundElement1.png', 'imagemPyGame': ''},
     'backgorundElement2': {'diretorio': 'backgorundElement2.png', 'imagemPyGame': ''},
     'backgorundElement3': {'diretorio': 'backgorundElement3.png', 'imagemPyGame': ''},

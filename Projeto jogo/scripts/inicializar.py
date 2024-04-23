@@ -26,6 +26,10 @@ def startGame():
     # carregar imagens
     for imagem in imagens:
         imagens[imagem]['imagemPyGame'] = pygame.image.load(getEndereco(imagens[imagem]['diretorio'])).convert_alpha()
+    # carregar imagens das skins
+    for skin in skinsNave:
+        skinsNave[skin]['imagemPyGame'] = pygame.image.load(getEndereco(skinsNave[skin]['diretorio'])).convert_alpha()
+
 
     # carregar imagem dos poderes
     for poder in poderes:

@@ -10,6 +10,7 @@ def checkCollision(tela):
         nave = hit
         explosao = Explosao((nave.rect.right, nave.rect.centery), hits[hit])
         all_sprites.add(explosao)
+        explosaoGroup.add(explosao)
         nave.perderVida()
 
   
@@ -21,6 +22,8 @@ def checkCollision(tela):
         laser = hit
         explosao = Explosao((laser.rect.right, laser.rect.centery), hits[hit])
         all_sprites.add(explosao)
+        explosaoGroup.add(explosao)
+
         tela.score += infos['pontosPorDestruirObstaculo']
 
     for poder in poderes_grupo:
@@ -38,6 +41,8 @@ def checkCollision(tela):
         laser = hit
         explosao = Explosao((laser.rect.right, laser.rect.centery), hits[hit])
         all_sprites.add(explosao)
+        explosaoGroup.add(explosao)
+
         for inimigo in inimigosGroup:
             inimigo.perderVida()
         tela.score += infos['pontosPorAcertarBoss']
@@ -48,5 +53,7 @@ def checkCollision(tela):
         laser = hit
         explosao = Explosao((laser.rect.left, laser.rect.centery), hits[hit])
         all_sprites.add(explosao)
+        explosaoGroup.add(explosao)
+
         for character in mainCharacter:
             character.perderVida()

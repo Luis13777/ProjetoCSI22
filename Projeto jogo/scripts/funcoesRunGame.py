@@ -13,6 +13,8 @@ def aumentarScore(tela):
     tela.scoreParaGerarPoder += 1
     tela.scoreParaAumentarVelocidadeGeracaoObstaculo += 1
     tela.scoreParaGerarBoss += 1
+    tela.scoreParaGerarElementoDeFundo += 1
+    tela.scoreParaGerarEstrela += 1
 
 def playerActions(player):
     # Verificando teclas pressionadas

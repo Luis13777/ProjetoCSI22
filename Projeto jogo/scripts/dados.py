@@ -1,7 +1,7 @@
 import pygame
 
 # dados brutos
-gameName = "Jogo CSI22"
+gameName = "SPACE ITA"
 dimensions = {"WIDTH": 1920,
 "HEIGHT": 1080}
 FPS = 144
@@ -26,6 +26,8 @@ layout = {
     'larguraDoBoss': dimensions["WIDTH"] * 0.1,
     'posicaoXBoss': dimensions["WIDTH"] * 0.9,
     'larguraBotaoStart': dimensions["WIDTH"] * 0.2,
+    'larguraElementosDeFundo': dimensions["WIDTH"] * 0.07,
+    'larguraEstrela': dimensions["WIDTH"] * 0.02,
 }
 
 infos = {
@@ -57,6 +59,14 @@ imagens ={
     'box2': {'diretorio': 'box2.png', 'imagemPyGame': ''},
     'bigBox': {'diretorio': 'bigBox.png', 'imagemPyGame': ''},
     'mainCharacterTransparente': {'diretorio': 'naveTransparente.png', 'imagemPyGame': ''},
+    'obstaculoImage2': {'diretorio': 'meteoro2.png', 'imagemPyGame': ''},
+    'backgorundElement1': {'diretorio': 'backgorundElement1.png', 'imagemPyGame': ''},
+    'backgorundElement2': {'diretorio': 'backgorundElement2.png', 'imagemPyGame': ''},
+    'backgorundElement3': {'diretorio': 'backgorundElement3.png', 'imagemPyGame': ''},
+    'backgorundElement4': {'diretorio': 'backgorundElement4.png', 'imagemPyGame': ''},
+    'backgorundElement5': {'diretorio': 'backgorundElement5.png', 'imagemPyGame': ''},
+    'estrela1': {'diretorio': 'estrela1.png', 'imagemPyGame': ''},
+    'estrela2': {'diretorio': 'estrela2.png', 'imagemPyGame': ''},
 
 
     }
@@ -70,6 +80,7 @@ fontes = {
     'fonteScoreGameOver': {'diretorio': 'ARCADE_N.TTF',   'tamanho': 45, 'fontePyGame': ''},
     'fonteGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 20, 'fontePyGame': ''},
     'fonteBigGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 70, 'fontePyGame': ''},
+    'fonteTituloJogo': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 100, 'fontePyGame': ''},
           }
 
 # velocidades dos elementos
@@ -94,8 +105,8 @@ velocidades = {'mainCharacterSpeed': 10,
                'scoreParaPerderOutraVida': 3000,
                'delayPiscada': 200,'tempoDeDelayTiroBoss': 1000,
                'scoreParaPerderOutraVidaBoss': 1000,
-
-
+               'scoreParaGerarElementoDeFundo': 500,
+               'scoreParaGerarEstrela': 50,
 
                }
 
@@ -120,11 +131,14 @@ sons = {
 }
 
 # grupos de sprites
-mainCharacter = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
+explosaoGroup = pygame.sprite.Group()
+mainCharacter = pygame.sprite.Group()
 tiros = pygame.sprite.Group()
 tirosInimigos = pygame.sprite.Group()
 meteoros = pygame.sprite.Group()
-poderes_grupo = pygame.sprite.Group()
 inimigosGroup = pygame.sprite.Group()
+poderes_grupo = pygame.sprite.Group()
+elementosDefundo = pygame.sprite.Group()
+estrelas = pygame.sprite.Group()
 

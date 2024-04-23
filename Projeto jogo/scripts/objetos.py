@@ -102,6 +102,8 @@ class janela():
         self.scoreParaAumentarVelocidade = 1
         self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
         self.scoreParaGerarBoss = 1
+        self.scoreParaGerarElementoDeFundo = 1
+        self.scoreParaGerarEstrela = 1
 
     def reiniciarTela(self):
         self.elementosParaRenderizar =  {}
@@ -114,6 +116,9 @@ class janela():
         self.scoreParaAumentarVelocidade = 1
         self.scoreParaAumentarVelocidadeGeracaoObstaculo = 1
         self.scoreParaGerarBoss = 1
+        self.scoreParaGerarElementoDeFundo = 1
+        self.scoreParaGerarEstrela = 1
+
 
 class backGround():
     def __init__(self):
@@ -133,6 +138,48 @@ class Obstaculo(pygame.sprite.Sprite):
         self.rect.left = dimensions['WIDTH']
         self.rect.y = random.randint(int(layout['proporcaoDoMenu']), int(dimensions['HEIGHT'] - self.rect.height))
         self.speed = velocidades['obstaculoSpeed']
+
+    def update(self):
+        self.rect.x -= self.speed
+        if self.rect.right < 0:
+            self.kill()
+
+
+class ElementoBackGround(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+
+        # Sorteia um número entre 2 e 5
+        numero_aleatorio = random.randint(1, 5)
+
+
+        self.image = carregarImagemRedimencionada(imagens[f'backgorundElement{numero_aleatorio}']['imagemPyGame'], layout['larguraElementosDeFundo'])
+        
+        self.rect = self.image.get_rect()
+        self.rect.left = dimensions['WIDTH']
+        self.rect.y = random.randint(int(layout['proporcaoDoMenu']), int(dimensions['HEIGHT'] - self.rect.height))
+        self.speed = velocidades['janelaSpeed']*0.5
+
+    def update(self):
+        self.rect.x -= self.speed
+        if self.rect.right < 0:
+            self.kill()
+
+
+class Estrela(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+
+        # Sorteia um número entre 2 e 5
+        numero_aleatorio = random.randint(1, 2)
+
+
+        self.image = carregarImagemRedimencionada(imagens[f'estrela{numero_aleatorio}']['imagemPyGame'], layout['larguraEstrela'])
+        
+        self.rect = self.image.get_rect()
+        self.rect.left = dimensions['WIDTH']
+        self.rect.y = random.randint(int(layout['proporcaoDoMenu']), int(dimensions['HEIGHT'] - self.rect.height))
+        self.speed = velocidades['obstaculoSpeed']*1.5
 
     def update(self):
         self.rect.x -= self.speed

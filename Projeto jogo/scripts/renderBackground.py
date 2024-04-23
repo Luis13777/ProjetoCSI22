@@ -1,10 +1,24 @@
 import pygame
 from scripts.dados import *
+from scripts.objetos import *
 
 
 def renderBackground(tela, velocidade=0):
     fundo = tela.elementosParaRenderizar['backGround']
     larguraDaImagemFundo = fundo.image.get_width()
+
+    if tela.scoreParaGerarElementoDeFundo > velocidades['scoreParaGerarElementoDeFundo']:
+        novoElementoBackGround = ElementoBackGround()
+        all_sprites.add(novoElementoBackGround)
+        elementosDefundo.add(novoElementoBackGround)
+        tela.scoreParaGerarElementoDeFundo = 1
+
+    if tela.scoreParaGerarEstrela > velocidades['scoreParaGerarEstrela']:
+        novaEstrela = Estrela()
+        all_sprites.add(novaEstrela)
+        estrelas.add(novaEstrela)
+        tela.scoreParaGerarEstrela = 1
+    
 
     if velocidade == 0:
         fundo.positionX -= tela.speed

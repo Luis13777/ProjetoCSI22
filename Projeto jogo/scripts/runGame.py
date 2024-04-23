@@ -15,11 +15,11 @@ from scripts.finalizarJogo import *
 
 
 def runGame(tela):
-    # Loop principal do jogo
     player = tela.elementosParaRenderizar['mainCharacter']
     
     running = True
 
+    # Loop principal do jogo
     while running:
 
         aumentarScore(tela)
@@ -44,8 +44,17 @@ def runGame(tela):
 
         all_sprites.update()
 
+        estrelas.draw(tela.SCREEN)
+        elementosDefundo.draw(tela.SCREEN)
+        poderes_grupo.draw(tela.SCREEN)
+        inimigosGroup.draw(tela.SCREEN)
+        meteoros.draw(tela.SCREEN)
+        tirosInimigos.draw(tela.SCREEN)
+        tiros.draw(tela.SCREEN)
+        mainCharacter.draw(tela.SCREEN)
+        explosaoGroup.draw(tela.SCREEN)
         # Renderize os sprites na tela
-        all_sprites.draw(tela.SCREEN)
+        # all_sprites.draw(tela.SCREEN)
 
         # Atualizar a tela
         pygame.display.flip()
@@ -54,8 +63,7 @@ def runGame(tela):
         tela.clock.tick(60)
 
         if player.morto():
-            while gameOver(tela):
-                pass
+            gameOver(tela)
             finalizarJogo(tela)
             return
         

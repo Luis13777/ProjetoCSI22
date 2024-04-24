@@ -83,6 +83,7 @@ imagens = {
     'estrela1': {'diretorio': 'estrela1.png', 'imagemPyGame': ''},
     'estrela2': {'diretorio': 'estrela2.png', 'imagemPyGame': ''},
     'pause': {'diretorio': 'pause.png', 'imagemPyGame': ''},
+    'cogumeloMario': {'diretorio': 'cogumeloMario.png', 'imagemPyGame': ''},
     }
 
 # fontes para serem carregadas
@@ -139,6 +140,7 @@ velocidades = {'mainCharacterSpeed': 10,
                'scoreParaPerderOutraVidaBoss': 1000,
                'scoreParaGerarElementoDeFundo': 500,
                'scoreParaGerarEstrela': 50,
+               'tempoInvencibilidade': 10000,
 
                }
 
@@ -148,7 +150,10 @@ velocidadesDefault = velocidades.copy()
 # poderes que podem ser adquiridos
 poderes = {
     'maisVida': {'image': 'powerUpVida', 'tipo': 'vida', 'imageName': imagens['powerUpVida']['diretorio']},
-    'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': imagens['powerUpTiro']['diretorio']}
+
+    'tiroMaisRapido': {'image': 'powerUpTiro', 'tipo': 'tiro', 'imageName': imagens['powerUpTiro']['diretorio']},
+
+    'invencivel': {'image': 'cogumeloMario', 'tipo': 'invencibilidade', 'imageName': imagens['cogumeloMario']['diretorio']},
 }
 
 # sons que podem ser tocados

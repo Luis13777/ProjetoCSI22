@@ -66,10 +66,12 @@ class MainCharacter(Character):
 
         self.imageVidaCheia  = carregarImagemRedimencionada(imagens['vidaCheia']['imagemPyGame'], layout['larguraCoracao'])
         self.imageVidaVazia = carregarImagemRedimencionada(imagens['vidaVazia']['imagemPyGame'], layout['larguraCoracao'])
+        self.invencivel = False
+        self.tempoInvencibilidade = pygame.time.get_ticks()
 
     def shoot(self):
         now = pygame.time.get_ticks()
-        if now - self.last_shot > self.shoot_delay:
+        if (now - self.last_shot > self.shoot_delay) and not self.invencivel:
             self.last_shot = now
             tiro = Tiro(self.rect.right, self.rect.centery)
             all_sprites.add(tiro)
@@ -77,7 +79,7 @@ class MainCharacter(Character):
             sons['shot']['somPyGame'].play()
 
     def perderVida(self):
-        if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay:
+        if pygame.time.get_ticks() - self.tempoPerdeuVida > self.vidaDelay and not self.invencivel:
             self.vidas -= 1
             self.transparente = True
             self.tempoPerdeuVida = pygame.time.get_ticks()
@@ -92,7 +94,13 @@ class MainCharacter(Character):
         if self.vidas <= 0:
             return True
         return False
-
+    
+    def Invencibilidade(self):
+        self.tempoInvencibilidade = pygame.time.get_ticks()
+        self.image = carregarImagemRedimencionada(imagens['mainCharacter']['imagemPyGame'], dimensions["HEIGHT"] * 0.75, redimensionarPelaLargura = False)
+        self.rect = self.image.get_rect()
+        self.rect.centery = dimensions["HEIGHT"] / 2
+        self.invencivel = True
 
     def update(self):
         if (pygame.time.get_ticks() - self.tempoPerdeuVida < self.vidaDelay):
@@ -110,6 +118,15 @@ class MainCharacter(Character):
                 self.transparente = False
                 self.image.set_alpha(255)
 
+    
+        if (pygame.time.get_ticks() - self.tempoInvencibilidade > velocidades['tempoInvencibilidade']) and self.invencivel:
+            self.image = carregarImagemRedimencionada(imagens['mainCharacter']['imagemPyGame'], dimensions["WIDTH"] * 0.05)
+            self.rect = self.image.get_rect()
+            self.rect.centery = layout['posicaoDaNaveY']
+            self.rect.left = layout['posicaoDaNaveX']
+
+            self.invencivel = False
+
 
 class Boss(Character):
     def __init__(self):
@@ -123,6 +140,7 @@ class Boss(Character):
         self.vidas = infos['maxVidasBoss']
         self.vidaDelay = velocidades['scoreParaPerderOutraVidaBoss']
         self.subindo = True
+
 
     def moveLeft(self):
         if self.rect.left > 0:
@@ -151,6 +169,9 @@ class Boss(Character):
         if self.vidas <= 0:
             self.kill()
 
+
+
+
     def update(self):
         self.shoot()
         if self.rect.right > layout['posicaoXBoss']:  
@@ -163,6 +184,7 @@ class Boss(Character):
             self.moveDown()
             if self.rect.bottom >= layout['fundo']:
                 self.subindo = True
+
 
 class janela():
     def __init__(self, SCREEN, clock):
@@ -269,7 +291,6 @@ class PowerUp(ObjetosQueSeMovem):
 
         listaDePoderes = list(poderes)
         novoPoder = listaDePoderes[random.randint(0, len(listaDePoderes) - 1)]
-
         self.image = carregarImagemRedimencionada(imagens[poderes[novoPoder]['image']]['imagemPyGame'], layout['larguraDoPoder'])
 
         self.tipo = poderes[novoPoder]['tipo']

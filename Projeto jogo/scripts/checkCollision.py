@@ -34,6 +34,10 @@ def checkCollision(tela):
             elif poder.tipo == 'tiro':
                 tela.elementosParaRenderizar['mainCharacter'].shoot_delay -= infos['tempoDeMenosDelayPowerUpTiro']
                 sons['powerup2']['somPyGame'].play()
+            elif poder.tipo == 'invencibilidade':
+                tela.elementosParaRenderizar['mainCharacter'].Invencibilidade()
+                tela.scores['score'] += 500
+            
             poder.kill()
 
     hits = pygame.sprite.groupcollide(tiros, inimigosGroup, True, False)

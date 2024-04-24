@@ -185,7 +185,6 @@ class Boss(Character):
             if self.rect.bottom >= layout['fundo']:
                 self.subindo = True
 
-
 class janela():
     def __init__(self, SCREEN, clock):
         self.SCREEN = SCREEN

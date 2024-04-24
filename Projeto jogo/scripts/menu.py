@@ -6,7 +6,6 @@ from scripts.telaDeSkins import *
 
 # Função para o menu principal
 def mainMenu(tela):
-
     # Reiniciar velocidades
     for item in velocidades:
         velocidades[item] = velocidadesDefault[item]

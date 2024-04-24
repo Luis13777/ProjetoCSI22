@@ -5,7 +5,7 @@ from scripts.renderBackground import *
 
 def telaDePause(tela):
 
-    quitButton = carregarImagemRedimencionada(imagens['box']['imagemPyGame'], dimensions['WIDTH']*0.4)
+    quitButton = carregarImagemRedimencionada(imagens['box']['imagemPyGame'], dimensions['WIDTH']*0.5)
 
     quitButton.get_height()
     quitButton.get_width()

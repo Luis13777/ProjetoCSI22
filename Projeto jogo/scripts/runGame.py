@@ -16,8 +16,18 @@ from scripts.finalizarJogo import *
 
 def runGame(tela):
     player = tela.elementosParaRenderizar['mainCharacter']
+    pauseButton = carregarImagemRedimencionada(imagens['pause']['imagemPyGame'], dimensions['HEIGHT']*0.05, redimensionarPelaLargura=False)
+
+    rectPauseButton = pauseButton.get_rect()
+    rectPauseButton.right = dimensions['WIDTH']*0.99 
+    rectPauseButton.top = dimensions['HEIGHT']*0.01
     
+    tela.elementosParaRenderizar['pauseButton'] = pauseButton
+
+
+
     running = True
+
 
     # Loop principal do jogo
     while running:
@@ -27,6 +37,12 @@ def runGame(tela):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = event.pos
+
+                if rectPauseButton.collidepoint(mouse_x, mouse_y):
+                    telaDePause(tela)
 
         # Preenchendo a tela com a cor branca
         tela.SCREEN.fill(BLACK)

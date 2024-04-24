@@ -82,6 +82,7 @@ imagens = {
     'backgorundElement5': {'diretorio': 'backgorundElement5.png', 'imagemPyGame': ''},
     'estrela1': {'diretorio': 'estrela1.png', 'imagemPyGame': ''},
     'estrela2': {'diretorio': 'estrela2.png', 'imagemPyGame': ''},
+    'pause': {'diretorio': 'pause.png', 'imagemPyGame': ''},
     }
 
 # fontes para serem carregadas

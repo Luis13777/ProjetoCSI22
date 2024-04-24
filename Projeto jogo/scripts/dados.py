@@ -1,7 +1,7 @@
 import pygame
 
 # dados brutos
-gameName = "SPACE ITA"
+gameName = "Legendary Space Discovery"
 dimensions = {"WIDTH": 1920,
 "HEIGHT": 1080}
 FPS = 144
@@ -28,6 +28,7 @@ layout = {
     'larguraBotaoStart': dimensions["WIDTH"] * 0.3,
     'larguraElementosDeFundo': dimensions["WIDTH"] * 0.07,
     'larguraEstrela': dimensions["WIDTH"] * 0.02,
+    'larguraLogo': dimensions["WIDTH"] * 0.3,
 }
 
 infos = {
@@ -48,10 +49,10 @@ skinsNave = {
     'mainCharacter4': {'diretorio': 'nave4.png', 'imagemPyGame': ''},
     'mainCharacter5': {'diretorio': 'nave5.png', 'imagemPyGame': ''},
     'mainCharacter6': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
-    'mainCharacter7': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
-    'mainCharacter8': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
-    'mainCharacter9': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
-    'mainCharacter10': {'diretorio': 'nave6.png', 'imagemPyGame': ''},
+    'mainCharacter7': {'diretorio': 'nave7.png', 'imagemPyGame': ''},
+    'mainCharacter8': {'diretorio': 'nave8.png', 'imagemPyGame': ''},
+    'mainCharacter9': {'diretorio': 'nave9.png', 'imagemPyGame': ''},
+    'mainCharacter10': {'diretorio': 'nave10.png', 'imagemPyGame': ''},
 }
 
 
@@ -84,6 +85,7 @@ imagens = {
     'estrela2': {'diretorio': 'estrela2.png', 'imagemPyGame': ''},
     'pause': {'diretorio': 'pause.png', 'imagemPyGame': ''},
     'cogumeloMario': {'diretorio': 'cogumeloMario.png', 'imagemPyGame': ''},
+    'logo': {'diretorio': 'logo.png', 'imagemPyGame': ''},
     }
 
 # fontes para serem carregadas
@@ -95,7 +97,7 @@ fontes = {
     'fonteScoreGameOver': {'diretorio': 'ARCADE_N.TTF',   'tamanho': 45, 'fontePyGame': ''},
     'fonteGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 20, 'fontePyGame': ''},
     'fonteBigGameOver': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 70, 'fontePyGame': ''},
-    'fonteTituloJogo': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 100, 'fontePyGame': ''},
+    'fonteTituloJogo': {'diretorio': 'ARCADE_N.TTF', 'tamanho': 60, 'fontePyGame': ''},
           }
 
 # scores que a tela estara contabilizando
@@ -164,7 +166,8 @@ sons = {
     'warning': {'diretorio': 'warning.mp3', 'somPyGame': ''},
     'killObject': {'diretorio': 'killObject.mp3', 'somPyGame': ''},
     'powerup2': {'diretorio': 'powerup2.mp3', 'somPyGame': ''},
-    'oneUp': {'diretorio': 'oneUp.mp3', 'somPyGame': ''}
+    'oneUp': {'diretorio': 'oneUp.mp3', 'somPyGame': ''},
+    'cogumeloMario': {'diretorio': 'cogumeloMario.mp3', 'somPyGame': ''}
 }
 
 # grupos de sprites

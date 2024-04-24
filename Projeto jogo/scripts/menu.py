@@ -59,10 +59,13 @@ def mainMenu(tela):
     nome_text_rect = nome_text.get_rect()
     # Para centralizar o texto no botão
     nome_text_rect.centerx = dimensions['WIDTH']/2
-    nome_text_rect.top = dimensions['HEIGHT']*0.2
+    nome_text_rect.top = dimensions['HEIGHT']*0.3
     # Desenha o texto na posição centralizada
 
-
+    logo = carregarImagemRedimencionada(imagens['logo']['imagemPyGame'], layout['larguraLogo'])
+    logoRect = start_button.get_rect()
+    logoRect.centerx = dimensions['WIDTH']/ 2
+    logoRect.top = 0
 
     # Loop principal do menu
     running = True
@@ -90,6 +93,7 @@ def mainMenu(tela):
         tela.SCREEN.blit(start_text, text_rect)
         tela.SCREEN.blit(skinButton, (skinButtonRect.x, skinButtonRect.y))
         tela.SCREEN.blit(skin_text, text_rect_skin)
+        tela.SCREEN.blit(logo, logoRect)
 
         pygame.display.flip()
 

@@ -36,6 +36,7 @@ def checkCollision(tela):
                 sons['powerup2']['somPyGame'].play()
             elif poder.tipo == 'invencibilidade':
                 tela.elementosParaRenderizar['mainCharacter'].Invencibilidade()
+                sons['cogumeloMario']['somPyGame'].play()
                 tela.scores['score'] += 500
             
             poder.kill()

@@ -6,10 +6,7 @@ pygame.init()
 
 # dados brutos
 gameName = "Legendary Space Discovery"
-# dimensions = {"WIDTH": 0,
-# "HEIGHT": 0}
-# dimensions = {"WIDTH": 1920,
-# "HEIGHT": 1080}
+
 dimensions = {}
 FPS = 144
 info = pygame.display.Info()

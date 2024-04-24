@@ -217,7 +217,7 @@ class Obstaculo(ObjetosQueSeMovem):
         # Sorteia um número entre 2 e 5
         numero_aleatorio = random.randint(1, 2)
 
-        self.image = carregarImagemRedimencionada(imagens[f'obstaculoImage{numero_aleatorio}']['imagemPyGame'], dimensions["WIDTH"] * random.uniform(0.05, 0.3))
+        self.image = carregarImagemRedimencionada(imagens[f'obstaculoImage{numero_aleatorio}']['imagemPyGame'], dimensions["WIDTH"] * random.uniform(0.05, 0.2))
         
         self.rect = self.image.get_rect()
         self.rect.left = dimensions['WIDTH']
@@ -232,7 +232,7 @@ class ElementoBackGround(ObjetosQueSeMovem):
         numero_aleatorio = random.randint(1, 5)
 
 
-        self.image = carregarImagemRedimencionada(imagens[f'backgorundElement{numero_aleatorio}']['imagemPyGame'], layout['larguraElementosDeFundo'])
+        self.image = carregarImagemRedimencionada(imagens[f'backgorundElement{numero_aleatorio}']['imagemPyGame'], layout['larguraElementosDeFundo'], redimensionarPelaLargura=False)
         
         self.rect = self.image.get_rect()
         self.rect.left = dimensions['WIDTH']

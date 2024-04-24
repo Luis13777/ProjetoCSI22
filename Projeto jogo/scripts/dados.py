@@ -26,7 +26,7 @@ layout = {
     'larguraDoBoss': dimensions["WIDTH"] * 0.1,
     'posicaoXBoss': dimensions["WIDTH"] * 0.9,
     'larguraBotaoStart': dimensions["WIDTH"] * 0.3,
-    'larguraElementosDeFundo': dimensions["WIDTH"] * 0.07,
+    'larguraElementosDeFundo': dimensions["HEIGHT"] * 0.1,
     'larguraEstrela': dimensions["WIDTH"] * 0.02,
     'larguraLogo': dimensions["WIDTH"] * 0.3,
 }

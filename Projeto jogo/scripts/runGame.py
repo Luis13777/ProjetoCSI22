@@ -1,13 +1,10 @@
 import pygame
 from scripts.dados import *
 from scripts.renderBackground import *
-# from scripts.renderObstaculos import *
 from scripts.checkCollision import *
 from scripts.funcoesRunGame import *
 from scripts.renderizarMenuTopo import *
 from scripts.aumentarDificuldade import *
-# from scripts.poderes import *
-# from scripts.iniciarBoss import *
 from scripts.finalizarJogo import *
 
 
@@ -70,7 +67,6 @@ def runGame(tela):
         mainCharacter.draw(tela.SCREEN)
         explosaoGroup.draw(tela.SCREEN)
         # Renderize os sprites na tela
-        # all_sprites.draw(tela.SCREEN)
 
         # Atualizar a tela
         pygame.display.flip()

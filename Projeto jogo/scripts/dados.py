@@ -3,8 +3,6 @@ import pygame
 
 pygame.init()
 
-
-# dados brutos
 gameName = "Legendary Space Discovery"
 
 dimensions = {}

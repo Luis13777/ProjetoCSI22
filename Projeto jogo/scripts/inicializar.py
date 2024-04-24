@@ -5,14 +5,10 @@ from scripts.objetos import *
 def startGame():
 
     # Iniciar jogo
-    pygame.init()
 
     # Iniciar sons
     pygame.mixer.init()
 
-    # Pegar dimensões do display
-    info = pygame.display.Info()
-    dimensions["WIDTH"], dimensions["HEIGHT"] = info.current_w, info.current_h
     # Crie a tela de jogo
     SCREEN = pygame.display.set_mode((dimensions["WIDTH"], dimensions["HEIGHT"]))
 

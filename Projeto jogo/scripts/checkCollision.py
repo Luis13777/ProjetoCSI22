@@ -4,7 +4,6 @@ from scripts.objetos import *
 
 def checkCollision(tela):
 
-
     hits = pygame.sprite.groupcollide(mainCharacter, meteoros,  False, True)
     for hit in hits:
         nave = hit
@@ -12,10 +11,6 @@ def checkCollision(tela):
         all_sprites.add(explosao)
         explosaoGroup.add(explosao)
         nave.perderVida()
-
-  
-            
-
         
     hits = pygame.sprite.groupcollide(tiros, meteoros, True, True)
     for hit in hits:
